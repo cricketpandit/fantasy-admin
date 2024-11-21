@@ -17,7 +17,7 @@ import {
 import Loader from "../../CommanPage/Loader";
 import { useAlert } from "react-alert";
 import _ from "lodash";
-import appLogo from "../../../assets/img/logo/logo2.svg";
+import appLogo from "../../../assets/img/logo/login-logo.png";
 
 
 function parseJwt(token) {

@@ -24,7 +24,7 @@ const DefaultHeader = (props) => {
     <React.Fragment>
       <AppSidebarToggler className="d-lg-none" display="md" mobile />
       <AppNavbarBrand>
-        <img className="" src={require('../../assets/img/logo/logo_hr.png') } alt='' />
+        <img style={{ height: '37px', width: '201px' }}  className="" src={require('../../assets/img/logo/logo-admin.png') } alt='' />
       </AppNavbarBrand>
       <AppSidebarToggler className="d-md-down-none" display="lg" />
       <Nav className="ml-auto" navbar>
