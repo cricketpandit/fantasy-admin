@@ -38,7 +38,7 @@ const Users = (props) => {
   const [dateSortType, setDateSortType] = useState('');
   const [exportExcel, setExportExcel] = useState('');
   const module = session.profile.user_type === "editor" ? session.profile.permissions.find((e) => e.manager === "User Management") : {}
-  const { user_type } = session.profile
+  const {role: user_type } = session.profile
   const pageData = async (page = activepage) => {
     setVisibale(true);
     const itemsPerPage = 10;
@@ -353,11 +353,11 @@ const Users = (props) => {
                     {users.map((item, key) => {
                       return (
                         <tr key={key}>
-                          <td className="text-align-left">{item.full_name}</td>
-                          <td className="text-align-left">{item.username}</td>
-                          <td className="text-align-left">{item.country_code + ' ' + item.phone}</td>
+                          <td className="text-align-left">{item.fullName}</td>
+                          <td className="text-align-left">{item.userName}</td>
+                          <td className="text-align-left">{item.mobile}</td>
                           <td className="text-align-left">{item.email}</td>
-                          <td className="text-align-left">{item.device_type}</td>
+                          <td className="text-align-left">{item.deviceType}</td>
                           <td className="text-align-center">
                             <Status item={item} refreshData={pageData} />
                           </td>
