@@ -7,6 +7,7 @@ import { Button, Card, CardBody, CardHeader, CardTitle, CardFooter, FormGroup, L
 import { useAlert } from 'react-alert';
 import useSession from 'react-session-hook';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const Toast = Swal.mixin({
   toast: true,
@@ -24,12 +25,62 @@ const EditInfluencer = (props) => {
   const [id, setId] = useState('');
   const [InfluencerStatus, setInfluencerStatus] = useState('');
   const [InfluencerData, setInfluencerData] = useState({});
-  
+
   const [influencer_image, setInfluencerImage] = useState('');
   const [preview, setInfluencerImagePreview] = useState('');
   const [buttonstate, setButtonState] = useState(false);
+  const [presignedKey, setPresignedKey] = useState("");
+  const [presignedUrl, setPresignedUrl] = useState("");
+
 
   const onSubmit = async data => {
+
+    setLoading(true);
+    let isImageUploaded = false;
+    const teamReader = new FileReader();
+    if (influencer_image) {
+      teamReader.readAsArrayBuffer(influencer_image);
+    }
+    teamReader.onloadend = async () => {
+      const binaryData = teamReader.result;
+      const resp = await axios.put(presignedUrl, binaryData, {
+        headers: {
+          "Content-Type": "application/octet-stream",
+        },
+      });
+      if (resp?.status === 200) {
+        isImageUploaded = true
+      }
+    }
+    if (isImageUploaded || preview) {
+      let postJson = {
+        id: id,
+        name: data.name.trim(),
+        code: data.code.trim(),
+        bonus_amount: data.bonus_amount,
+        status: data.status,
+        image: presignedKey
+      };
+      let path = apiUrl.update_influencer;
+      const fr = await Helper.post(token, postJson, path);
+      const res = await fr.response.json();
+      if (fr.status === 200) {
+        if (res.success) {
+          setLoading(false);
+          props.history.push('/influencers');
+          alert.success(res.msg);
+        } else {
+          alert.error(res.msg);
+          setLoading(false);
+        }
+      } else {
+        alert.error(res.error);
+        setLoading(false);
+      }
+    }
+  };
+
+  const onSubmitOld = async data => {
     setLoading(true);
     let formData = new FormData();
     let postJson = {
@@ -44,7 +95,7 @@ const EditInfluencer = (props) => {
     formData.append('influencer_image', influencer_image);
 
     let path = apiUrl.update_influencer;
-    const fr = await Helper.formPost(token,formData, path);
+    const fr = await Helper.formPost(token, formData, path);
     const res = await fr.response.json();
     if (fr.status === 200) {
       if (res.success) {
@@ -68,7 +119,7 @@ const EditInfluencer = (props) => {
   }
   const getData = async () => {
     let path = apiUrl.get_influencer + '/' + `${props.match.params.id}`;
-    const fr = await Helper.get(token,path);
+    const fr = await Helper.get(token, path);
     const res = await fr.response.json();
     if (fr.status === 200) {
       if (res.success) {
@@ -84,53 +135,89 @@ const EditInfluencer = (props) => {
     }
   };
 
-  const onImageChange = (event) => {
-    if (event.target.files && event.target.files[0]) {
-      const image = event.target.files[0];
-      if (!image.name.match(/\.(jpg|jpeg|png|gif)$/)) {
-        Toast.fire({
-          icon: "error",
-          title: "Select a valid image.",
-        });
-        setButtonState(true);
-        return false;
-      } else {
-        const img = new Image();
-        img.src = URL.createObjectURL(image);        
-        let realImage  = event.target.files[0]
-
-        img.onload = () => {
-          const width = img.width;
-          const height = img.height;
-  
-          // Validate image width (example: width must be at least 300px)
-          if (width != height) {
-            Toast.fire({
-              icon: "error",
-              title: "Image must be square in shape.",
-            });
-            setButtonState(true);
-            return false;
-          } else {
-            if (realImage) {
-              setInfluencerImagePreview(URL.createObjectURL(realImage));
-              setInfluencerImage(realImage);
-              setButtonState(false);
+  const onImageChange = async (event) => {
+    let type = event.target.files[0]?.type.split("/");
+    const file = event.target.files[0];
+    if (type?.length) {
+      if (type[0] === "image") {
+        if (event.target.files && event.target.files[0]) {
+          setButtonState(false);
+          setInfluencerImagePreview(URL.createObjectURL(file));
+          setInfluencerImage(file);
+          let postJson = {
+            contentType: file.type,
+            folderType: 'influencers'
+          };
+          let path = apiUrl.pre_signed_url_generate;
+          const fr = await Helper.post(token, postJson, path);
+          const res = await fr.response.json();
+          if (fr.status === 200) {
+            if (res.success) {
+              setPresignedUrl(res.results.url);
+              setPresignedKey(res.results.key);
+            } else {
+              alert.error(res.msg);
             }
+          } else {
+            alert.error(res.error);
           }
-        };
-  
-        img.onerror = () => {
-          Toast.fire({
-            icon: "error",
-            title: "Failed to load the image.",
-          });
-          setButtonState(true);
-          return false;
-        };
+        }
+      } else {
+        setButtonState(true);
+        alert.error("Only jpg, .jpeg and png image are allowed");
+        let myImage = document.getElementById("banner_pic");
+        myImage.value = "";
       }
     }
   };
+
+  // const onImageChange = (event) => {
+  //   if (event.target.files && event.target.files[0]) {
+  //     const image = event.target.files[0];
+  //     if (!image.name.match(/\.(jpg|jpeg|png|gif)$/)) {
+  //       Toast.fire({
+  //         icon: "error",
+  //         title: "Select a valid image.",
+  //       });
+  //       setButtonState(true);
+  //       return false;
+  //     } else {
+  //       const img = new Image();
+  //       img.src = URL.createObjectURL(image);        
+  //       let realImage  = event.target.files[0]
+
+  //       img.onload = () => {
+  //         const width = img.width;
+  //         const height = img.height;
+
+  //         // Validate image width (example: width must be at least 300px)
+  //         if (width != height) {
+  //           Toast.fire({
+  //             icon: "error",
+  //             title: "Image must be square in shape.",
+  //           });
+  //           setButtonState(true);
+  //           return false;
+  //         } else {
+  //           if (realImage) {
+  //             setInfluencerImagePreview(URL.createObjectURL(realImage));
+  //             setInfluencerImage(realImage);
+  //             setButtonState(false);
+  //           }
+  //         }
+  //       };
+
+  //       img.onerror = () => {
+  //         Toast.fire({
+  //           icon: "error",
+  //           title: "Failed to load the image.",
+  //         });
+  //         setButtonState(true);
+  //         return false;
+  //       };
+  //     }
+  //   }
+  // };
   useEffect(() => {
     getData();
   }, []);
@@ -150,7 +237,7 @@ const EditInfluencer = (props) => {
                   <div className='input_grp  col-md-6'>
                     <input type="text" name="name" maxLength={"25"} onInput={maxLengthCheck} placeholder="Influencer name" autoComplete="off"
                       className="form-control" defaultValue={InfluencerData.name} ref={register({ required: 'Required' })} />
-                    {Helper.andOperator(errors.name,<p className="text-danger marginmessage">Enter valid influencer name</p>)}
+                    {Helper.andOperator(errors.name, <p className="text-danger marginmessage">Enter valid influencer name</p>)}
                   </div>
                 </FormGroup>
               </Col>
@@ -160,20 +247,20 @@ const EditInfluencer = (props) => {
                   <div className='input_grp  col-md-6'>
                     <input type="text" name="code" maxLength={"16"} onInput={maxLengthCheck} placeholder="Influencer code" autoComplete="off"
                       className="form-control" defaultValue={InfluencerData.code} ref={register({ required: 'Required' })} />
-                    {Helper.andOperator(errors.code,<p className="text-danger marginmessage">Enter valid influencer code</p>)}
+                    {Helper.andOperator(errors.code, <p className="text-danger marginmessage">Enter valid influencer code</p>)}
                   </div>
                 </FormGroup>
               </Col>
-              
+
               <Col md={6}>
-                  <FormGroup className='row'>
-                      <Label className={'col-md-3 pull-left mt-2'}>Influencer Image</Label>
-                      <input id='influencer_image' type="file" onChange={onImageChange} name="influencer_image" className="form-control col-md-6" autoComplete="off" placeholder="Pic" />
-                      <ErrorMessage errors={errors} name="influencer_image_error">
-                          {({ message }) => <p className={"text-danger"}>{message}</p>}
-                      </ErrorMessage>
-                      {preview && <img alt="Profile" id="target" className={'mt-3 rounded'} height={200} src={preview} />}      
-                  </FormGroup>
+                <FormGroup className='row'>
+                  <Label className={'col-md-3 pull-left mt-2'}>Influencer Image</Label>
+                  <input id='influencer_image' type="file" onChange={onImageChange} name="influencer_image" className="form-control col-md-6" autoComplete="off" placeholder="Pic" />
+                  <ErrorMessage errors={errors} name="influencer_image_error">
+                    {({ message }) => <p className={"text-danger"}>{message}</p>}
+                  </ErrorMessage>
+                  {preview && <img alt="Profile" id="target" className={'mt-3 rounded'} height={200} src={preview} />}
+                </FormGroup>
               </Col>
 
               <Col md={6}>
@@ -182,11 +269,11 @@ const EditInfluencer = (props) => {
                   <div className='input_grp  col-md-6'>
                     <input type="number" name="bonus_amount" maxLength={"3"} min={"0"} onInput={maxLengthCheck} placeholder="Bonus Amount" autoComplete="off"
                       className="form-control" defaultValue={InfluencerData.bonus_amount} ref={register({ required: 'Required', min: 0, maxLength: 7 })} />
-                    {Helper.andOperator(errors.bonus_amount, <p className="text-danger marginmessage">Bonus amount is required</p>) }
+                    {Helper.andOperator(errors.bonus_amount, <p className="text-danger marginmessage">Bonus amount is required</p>)}
                   </div>
                 </FormGroup>
               </Col>
-              
+
               <Col md={6}>
                 <FormGroup className='row'>
                   <Label className={'col-md-3 pull-left mt-2'}>Status</Label>
@@ -196,16 +283,16 @@ const EditInfluencer = (props) => {
                       <option value={'active'}>Active</option>
                       <option value={'inactive'}>Inactive</option>
                     </select>
-                    {Helper.andOperator(errors.status,<p className="text-danger marginmessage">Status is required</p>)}
+                    {Helper.andOperator(errors.status, <p className="text-danger marginmessage">Status is required</p>)}
                   </div>
                 </FormGroup>
               </Col>
-              
+
             </Row>
           </CardBody>
           <CardFooter>
             <Button onClick={() => history.goBack()} className="dark_btn"><i className="fa fa-arrow-left" aria-hidden="true"></i> Back  </Button>
-            <Button className={'ml-2'} type="submit" color="primary">Submit {loading === true ? <i className="fa fa-spinner fa-pulse fa-fw ml-1"></i> : <i className="fa fa-arrow-circle-right fa-lg" aria-hidden="true"></i>}</Button>
+            <Button disabled={buttonstate} className={'ml-2'} type="submit" color="primary">Submit {loading === true ? <i className="fa fa-spinner fa-pulse fa-fw ml-1"></i> : <i className="fa fa-arrow-circle-right fa-lg" aria-hidden="true"></i>}</Button>
           </CardFooter>
         </Card>
       </form>
