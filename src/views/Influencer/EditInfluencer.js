@@ -80,38 +80,6 @@ const EditInfluencer = (props) => {
     }
   };
 
-  const onSubmitOld = async data => {
-    setLoading(true);
-    let formData = new FormData();
-    let postJson = {
-      id: id,
-      name: data.name.trim(),
-      code: data.code.trim(),
-      bonus_amount: data.bonus_amount,
-      status: data.status
-    };
-
-    formData.append('data', JSON.stringify(postJson));
-    formData.append('influencer_image', influencer_image);
-
-    let path = apiUrl.update_influencer;
-    const fr = await Helper.formPost(token, formData, path);
-    const res = await fr.response.json();
-    if (fr.status === 200) {
-      if (res.success) {
-        setLoading(false);
-        props.history.push('/influencers');
-        alert.success(res.msg);
-      } else {
-        alert.error(res.msg);
-        setLoading(false);
-      }
-    } else {
-      alert.error(res.error);
-      setLoading(false);
-    }
-  };
-
   const maxLengthCheck = (object) => {
     if (object.target.value.length > object.target.maxLength) {
       object.target.value = object.target.value.slice(0, object.target.maxLength)
