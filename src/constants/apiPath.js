@@ -8,8 +8,8 @@ let apiUrl = {
   get_dashBoard_data: '/admin/dashboard',
   get_admin_earning_graph: '/admin/get-admin-earning-graph',
   change_Password_by_admin: '/admin/change-password-by-admin',
-  get_admin_profile: '/admin/get-profile',
-  update_admin_profile: '/admin/profile',
+  get_admin_profile: '/admin/get-admin-profile',
+  update_admin_profile: '/admin/admin-profile',
   change_admin_password: '/admin/change-password',
 
   get_sub_admins: '/admin/sub-admins',

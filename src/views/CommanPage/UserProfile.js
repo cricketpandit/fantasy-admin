@@ -20,16 +20,16 @@ const UserProfile = (props) => {
 
     const session = useSession();
     let history = useHistory();
-    const [full_name, setFullname] = useState("");
+    const [firstName, setFirstName] = useState("");
     const [mobile, setMobile] = useState("");
-    const [username, setUsername] = useState("");
+    const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [token] = useState(session.token);
     const [buttonstate] = useState(false);
 
     const onSumbit = async e => {
         let formData = new FormData();
-        let postJson = { full_name, username: username, email: email, phone: mobile, country_code: "+91" };
+        let postJson = { firstName, lastName, email: email, mobile, country_code: "+91" };
         formData.append('data', JSON.stringify(postJson));
         let path = apiUrl.update_admin_profile;
         const fr = await Helper.formPost(token, formData, path);
@@ -40,7 +40,6 @@ const UserProfile = (props) => {
                     type: "success",
                     title: res.msg,
                 });
-                localStorage.setItem("username", username);
                 props.history.push('/userprofile');
             } else {
                 Toast.fire({
@@ -64,10 +63,10 @@ const UserProfile = (props) => {
         const res = await fr.response.json();
          if (fr.status === 200) {
             if (res.success) {
-                setFullname(res.results.full_name);
+                setFirstName(res.results.firstName);
               
-                setUsername(res.results.username);
-                setMobile(res.results.phone);
+                setLastName(res.results.lastName);
+                setMobile(res.results.mobile);
                 setEmail(res.results.email);
             } else {
                 Toast.fire({
@@ -106,8 +105,8 @@ const UserProfile = (props) => {
                                     <Label className={'col-md-2 pull-left mt-2'}>Full Name</Label>
                                     <div className='col-md-8 p-0'>
                                         <TextValidator type="text" name="fname" placeholder="Frist Name" className="form-control "
-                                            onChange={(e) => { setFullname(e.target.value) }}
-                                            value={full_name}
+                                            onChange={(e) => { setFirstName(e.target.value) }}
+                                            value={firstName}
                                             validators={['required', 'noSpaces']}
                                             errorMessages={['This field is required', 'This field is required']} />
                                     </div>
@@ -116,10 +115,10 @@ const UserProfile = (props) => {
                         
                             <Col md={6}>
                                 <FormGroup>
-                                    <Label className={'col-md-2 pull-left mt-2'}>User Name</Label>
-                                    <TextValidator type="text" name="username" className="form-control col-md-8" disabled placeholder="User Name"
-                                        onChange={(e) => { setUsername(e.target.value) }}
-                                        value={username}
+                                    <Label className={'col-md-2 pull-left mt-2'}>Last Name</Label>
+                                    <TextValidator type="text" name="lastName" className="form-control col-md-8" disabled placeholder="Last Name"
+                                        onChange={(e) => { setLastName(e.target.value) }}
+                                        value={lastName}
                                         validators={['required']}
                                         errorMessages={['This field is required']}
                                     />
