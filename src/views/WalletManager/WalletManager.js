@@ -22,7 +22,7 @@ const WalletManager = (props) => {
   const [enddate, setEndDate] = useState('');
   const [serachstatus, setSerachStatus] = useState('');
   const [keywords, setKeyWords] = useState('');
-  const [visible, setVisibale] = useState(false);
+  const [visible, setVisible] = useState(false);
   const [token] = useState(session.token);
   const [isserach, setIsserach] = useState(false);
   const [query, setQuery] = useState({});
@@ -31,7 +31,7 @@ const WalletManager = (props) => {
   const { user_type } = session.profile
 
   const pageData = async (page = activepage) => {
-    setVisibale(true);
+    setVisible(true);
     const itemsPerPage = 10;
     setActivePage(page);
     let path;
@@ -89,14 +89,14 @@ const WalletManager = (props) => {
         setExportExcel(res?.excel_path);
         setTotalItems(res?.results?.totalDocs);
         setIsserach(false);
-        setVisibale(false)
+        setVisible(false)
       } else {
         alert.error(res.msg);
-        setVisibale(false)
+        setVisible(false)
       }
     } else {
       alert.error(res.error);
-      setVisibale(false)
+      setVisible(false)
     }
   }
 
