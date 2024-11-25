@@ -299,10 +299,8 @@ const CricketEarningManager = (props) => {
                       <th>Total Contest</th>
                       <th>Total Team</th>
                       <th>Amount INR</th>
-                      {/* <th>Bonus INR</th> */}
                       <th>Winning Distribution INR</th>
                       <th>Total Earning INR</th>
-                      {/* <th>Action</th> */}
                     </tr>
                   </thead>
                   <tbody>
