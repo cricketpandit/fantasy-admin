@@ -44,16 +44,16 @@ export default {
           url: '/banners',
           icon: 'nav-icon fa fa-flag',
         },
-        {
-          name: 'Promotional Banners',
-          url: '/promotional-banners',
-          icon: 'nav-icon fa fa-flag',
-        },
-        {
-          name: 'Home Banners',
-          url: '/home-banners',
-          icon: 'nav-icon fa fa-flag',
-        },
+        // {
+        //   name: 'Promotional Banners',
+        //   url: '/promotional-banners',
+        //   icon: 'nav-icon fa fa-flag',
+        // },
+        // {
+        //   name: 'Home Banners',
+        //   url: '/home-banners',
+        //   icon: 'nav-icon fa fa-flag',
+        // },
       ]
     },
 
@@ -76,11 +76,11 @@ export default {
     //   ]
     // },
 
-    {
-      name: 'Coupons',
-      url: '/coupons',
-      icon: 'nav-icon fa fa-gift',
-    },
+    // {
+    //   name: 'Coupons',
+    //   url: '/coupons',
+    //   icon: 'nav-icon fa fa-gift',
+    // },
     {
       name: 'Influencers',
       url: '/influencers',

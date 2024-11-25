@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import useSession from "react-session-hook";
 import { Redirect } from "react-router-dom";
 import { ErrorMessage, useForm } from "react-hook-form";
@@ -40,7 +40,7 @@ const AdminLogin = (props) => {
   const [visible, setVisibale] = useState(false);
   const session = useSession();
   const { register, handleSubmit, errors } = useForm();
- 
+
   const onSubmit = async (data) => {
     setVisibale(true);
     let postJson = {
@@ -49,8 +49,8 @@ const AdminLogin = (props) => {
       user_type: "admin",
     };
     let path = apiUrl.adminLogin;
-    const fr = await Helper.post("",postJson, path);
-     const response_data = await fr.response.json();
+    const fr = await Helper.post("", postJson, path);
+    const response_data = await fr.response.json();
     if (fr.status === 200) {
       if (response_data.success) {
         alert.success(response_data.msg);
@@ -126,7 +126,7 @@ const AdminLogin = (props) => {
                         placeholder="Enter Email"
                         errors={errors}
                         onKeyDown={(e) => {
-                         
+
                           if (e.key == " ") {
                             e.returnValue = false;
                             return false;
@@ -168,9 +168,9 @@ const AdminLogin = (props) => {
                         )}
                       </ErrorMessage>
                     </FormGroup>
-                    <div className="text-primary custom-pointer float-right"  style={{ marginBottom: '1rem' }} onClick={()=>props.history.push("/forgot-password")}>
-                    Forgot Password ?
-                    </div>
+                    {/* <div className="text-primary custom-pointer float-right" style={{ marginBottom: '1rem' }} onClick={() => props.history.push("/forgot-password")}>
+                      Forgot Password ?
+                    </div> */}
                     <Button type="submit" className="btn btn-primary rounded-pill m-0 bg-primary w-100 text-white">
                       Login
                     </Button>

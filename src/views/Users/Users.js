@@ -226,7 +226,7 @@ const Users = (props) => {
     let transactionButton = null;
     if ((user_type === "admin") || (user_type === "editor" && module.edit === 1)) {
       transactionButton = (
-        <Link to={{ pathname: `/statements/${items.id}` }} className="btn-link">
+        <Link to={{ pathname: `/statements/${items._id}` }} className="btn-link">
           <button className="btn circle_btn btn-sm mr-1" type="button" title="User Transaction">
             <i className="fa fa-exchange" />
           </button>
@@ -250,12 +250,12 @@ const Users = (props) => {
           <Card>
             <CardHeader className="align-items-center d-flex">
               Users
-              <div className="ml-auto">
+              {/* <div className="ml-auto">
                 <Link to="/add-user" className="btn btn-primary">
                   <i className="fa fa-plus mr-1"></i>
                   Add User
                 </Link>
-              </div>
+              </div> */}
               
             </CardHeader>
             <CardBody>
@@ -367,7 +367,7 @@ const Users = (props) => {
                               _.isEmpty(props.match.params.id) ?
                                 <div>
 
-                                  {showButton(user_type,item)}
+                                  {/* {showButton(user_type,item)} */}
                                   {showViewButton(user_type,userImage,item)}
                                   {isbankVerified(item) && <ViewBankDetails module={module} item={item} bank_img={bankImage} refreshData={pageData} />}
                                   {isPanVerified(item) && <ViewPancard module={module} item={item} pan_img={panImage} refreshData={pageData} />}

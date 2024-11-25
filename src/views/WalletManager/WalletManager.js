@@ -109,7 +109,6 @@ const WalletManager = (props) => {
     setEndDate('');
     setKeyWords('');
     setSerachStatus('');
-    getData();
     resetSearch();
     setActivePage(1);
   };

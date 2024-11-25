@@ -269,8 +269,8 @@ const GSTReport = (props) => {
                               {item.rows.pan_number}
                             </td>
                             <td className="text-right">
-                              {item?.rows?.added_amount && item?.rows?.added_amount > 0
-                                ? item.rows.added_amount.toFixed(2) 
+                              {item?.rows?.totalAmount && item?.rows?.totalAmount > 0
+                                ? item.rows.totalAmount.toFixed(2) 
                                 :   "-"}
                             </td>
                             <td className="text-right">

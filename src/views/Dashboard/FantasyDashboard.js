@@ -67,6 +67,7 @@ const FantasyDashboard = () => {
     <div className="animated fadeIn loader-outer">
       <Loaders className="overlay-loader" visible={visible} />
       <Row>
+        {/* 
         <div className="col-xl-3 col-lg-4 col-sm-6">
           <div to={"/users"} onClick={()=>setAmount(amount+10)}>
             <div className="text-white dsboard_box1 card border-0 value_custome_card">
@@ -173,7 +174,7 @@ const FantasyDashboard = () => {
             </div>
           </Link>
         </div>
-
+        */}
         <div className="col-xl-3 col-lg-4 col-sm-6">
           <Link to={"/cricket/contests"}>
             <div className="text-white dsboard_box4 card border-0 value_custome_card">

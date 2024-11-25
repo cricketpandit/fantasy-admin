@@ -156,6 +156,7 @@ const AccountStatement = (props) => {
       debit,
       credit,
       balance,
+      transactionAmount,
       type,
       remarks,
       createdAt,
@@ -164,13 +165,10 @@ const AccountStatement = (props) => {
     return (
       <tr>
         <td className="text-left">{full_name}</td>
-        <td className="text-left">{username}</td>
         <td className="text-left">{email}</td>
         {/* <td className="text-right">{phone}</td> */}
-        <td className="text-right">{debit}</td>
-        <td className="text-right">{credit}</td>
-        <td className="text-right">{balance.toFixed(2)}</td>
-        <td className="text-left">{getTypeLabel(type)}</td>
+        <td className="text-right">{transactionAmount.toFixed(2)}</td>
+        <td className="text-left">{type}</td>
         <td className="text-left">{remarks}</td>
         <td className="text-center">{moment(createdAt).format('LLL')}</td>
       </tr>
@@ -270,12 +268,9 @@ const AccountStatement = (props) => {
                   <thead>
                     <tr>
                       <th className="text-left">Full Name</th>
-                      <th className="text-left">Username</th>
                       <th className="text-left">Email</th>
                       {/* <th className="text-right">Phone</th> */}
-                      <th className="text-right">Debit (INR)</th>
-                      <th className="text-right">Credit (INR)</th>
-                      <th className="text-right">Balance (INR)</th>
+                      <th className="text-right">Transaction Amount</th>
                       <th className="text-left">Type</th>
                       <th className="text-left">Remark</th>
                       <th className="text-center">Created At</th>

@@ -171,13 +171,13 @@ const Transactions = (props) => {
                   <Col lg={9}>
                     <Form>
                       <Row>
-                      <Col md={2} sm={6}>
+                      <Col md={3} sm={6}>
                           <FormGroup className="mb-xl-0">
                             <Input type="text" placeholder="Search" value={keywords} className="form-control"
                               onChange={(e) => { setKeyWords(e.target.value) }} />
                           </FormGroup>
                         </Col>
-                        <Col md={2} sm={6}>
+                        <Col md={3} sm={6}>
                           <FormGroup className="mb-xl-0">
                             <DatePicker selected={startdate === '' || startdate === null ? "" : new Date(startdate)} className="form-control" placeholderText=" Start Date"
                               dateFormat="dd/MM/yyyy"
@@ -188,7 +188,7 @@ const Transactions = (props) => {
                               dropdownMode="select" />
                           </FormGroup>
                         </Col>
-                        <Col md={2} sm={6}>
+                        <Col md={3} sm={6}>
                           <FormGroup className="mb-xl-0">
                             <DatePicker selected={enddate === '' || enddate === null ? "" : new Date(enddate)} className="form-control" placeholderText=" End Date"
                               dateFormat="dd/MM/yyyy"
@@ -200,7 +200,7 @@ const Transactions = (props) => {
                               dropdownMode="select" />
                           </FormGroup>
                         </Col>
-                        <Col md={3} sm={6}>
+                        {/* <Col md={3} sm={6}>
                           <FormGroup className="mb-xl-0">
                             <select type="text" placeholder="Status" className="form-control" value={serachstatus}
                               onChange={(e) => { setSerachStatus(e.target.value) }} >
@@ -211,7 +211,7 @@ const Transactions = (props) => {
                               <option value={3}>Failed</option>
                             </select>
                           </FormGroup>
-                        </Col>
+                        </Col> */}
                       </Row>
                     </Form>
                   </Col>
