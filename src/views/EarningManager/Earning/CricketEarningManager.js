@@ -325,7 +325,7 @@ const CricketEarningManager = (props) => {
                             <td>{item.team_count}</td>
                             <td>{item?.entry_fee?.toFixed(2)}</td>
                             {/* <td>{item?.bonus?.toFixed(2)}</td> */}
-                            <td>{item?.winning_amount?.toFixed(2)}</td>
+                            <td>{item?.distributed_amount?.toFixed(2)}</td>
                             <td>{totalEarn?.toFixed(2)}</td>
                     
                           </tr>
