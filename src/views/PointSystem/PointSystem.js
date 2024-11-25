@@ -26,7 +26,7 @@ const PointSystem = (props) => {
           <Card>
             <CardBody>
               <nav className="navbar navbar-expand-lg navbar-light">
-                <Link to='#' className="navbar-brand text-white ">Point System</Link>
+                <Link to='#' className="navbar-brand text-dark">Point System</Link>
                 <div className="collapse navbar-collapse mobile-show" id="navbarSupportedContent">
                   <ul className="navbar-nav mr-auto tabs_list">
                   <li className="nav-item">

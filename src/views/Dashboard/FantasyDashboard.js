@@ -226,7 +226,7 @@ const FantasyDashboard = () => {
           <Card>
             <CardBody>
               <nav className="navbar navbar-expand-lg navbar-light">
-                <Link to='#' className="navbar-brand text-white">Earning Graph</Link>
+                <Link to='#' className="navbar-brand text-dark">Earning Graph</Link>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul className="navbar-nav mr-auto tabs_list">
                     <li className="nav-item">
