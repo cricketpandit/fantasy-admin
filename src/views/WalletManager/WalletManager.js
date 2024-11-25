@@ -203,11 +203,11 @@ const WalletManager = (props) => {
                       return (
                         <tr key={key}>
                           <td>{key + 1}</td>
-                          <td>{item.full_name}</td>
+                          <td>{item.fullName}</td>
                           {/* <td>{item.phone}</td> */}
                           <td>{item.email}</td>
                           <td>
-                            {item.deposit_amount?.toFixed(2)}
+                            {item.depositAmount?.toFixed(2)}
                             <div className={"pull-right"} >{((user_type === "editor" && module.edit === 1) || user_type=="admin")?<Edit type={'Deposit'} item={item} refreshData={pageData} />: null}</div>
                           </td>
                           {/* <td>
@@ -215,11 +215,11 @@ const WalletManager = (props) => {
                             <div className={"pull-right"} >{((user_type === "editor" && module.edit === 1) || user_type=="admin")?<Edit type={'Free Cash'} item={item} refreshData={pageData} />: null}</div>
                           </td> */}
                           <td>
-                            {item.bonus?.toFixed(2)}
+                            {item.bonusAmount?.toFixed(2)}
                             <div className={"pull-right"} >{((user_type === "editor" && module.edit === 1) || user_type=="admin")?<Edit type={'Bonus'} item={item} refreshData={pageData} />: null}</div>
                           </td>
                           <td>
-                            {item.winngs_amount?.toFixed(2)}
+                            {item.winningAmount?.toFixed(2)}
                             <div className={"pull-right"} >{((user_type === "editor" && module.edit === 1) || user_type=="admin")?<Edit type={'Winning'} item={item} refreshData={pageData} />
                              : null}
                             </div>

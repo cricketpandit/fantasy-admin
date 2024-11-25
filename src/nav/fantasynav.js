@@ -154,16 +154,16 @@ export default {
       icon: 'nav-icon fa fa-list-alt',
     },
 
-    {
-      name: 'Account Statement',
-      url: '/statements',
-      icon: 'nav-icon fa fa-list-alt',
-    },
-    {
-      name: 'Withdraw Request',
-      url: '/withdarwals',
-      icon: 'nav-icon fa fa-arrow-down',
-    },
+    // {
+    //   name: 'Account Statement',
+    //   url: '/statements',
+    //   icon: 'nav-icon fa fa-list-alt',
+    // },
+    // {
+    //   name: 'Withdraw Request',
+    //   url: '/withdarwals',
+    //   icon: 'nav-icon fa fa-arrow-down',
+    // },
     {
       name: 'Transactions',
       url: '/transactions',
@@ -184,27 +184,27 @@ export default {
     //   url: '/notifications',
     //   icon: 'nav-icon fa fa-bell',
     // },
-    {
-      name: 'Email Templates',
-      url: '/email-templates',
-      icon: 'nav-icon fa fa-folder-open-o',
-    },
-    {
-      name: 'Static Pages',
-      url: '/static-pages',
-      icon: 'nav-icon fa fa-file',
-    },
+    // {
+    //   name: 'Email Templates',
+    //   url: '/email-templates',
+    //   icon: 'nav-icon fa fa-folder-open-o',
+    // },
+    // {
+    //   name: 'Static Pages',
+    //   url: '/static-pages',
+    //   icon: 'nav-icon fa fa-file',
+    // },
 
-    {
-      name: 'Faqs',
-      url: '/faqs',
-      icon: 'nav-icon fa fa-flag',
-    },
-    {
-      name: 'Settings',
-      url: '/settings',
-      icon: 'nav-icon fa fa-gear',
-    },
+    // {
+    //   name: 'Faqs',
+    //   url: '/faqs',
+    //   icon: 'nav-icon fa fa-flag',
+    // },
+    // {
+    //   name: 'Settings',
+    //   url: '/settings',
+    //   icon: 'nav-icon fa fa-gear',
+    // },
     // {
     //   name: 'Merchandise',
     //   url: '/merchandise',

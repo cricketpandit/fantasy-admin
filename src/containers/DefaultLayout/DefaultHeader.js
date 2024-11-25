@@ -18,7 +18,7 @@ const defaultProps = {};
 const DefaultHeader = (props) => {
 
   const session = useSession();
-  const username = session.profile.username;
+  const firstName = session.profile.firstName;
 
   return (
     <React.Fragment>
@@ -30,11 +30,11 @@ const DefaultHeader = (props) => {
       <Nav className="ml-auto" navbar>
         <UncontrolledDropdown nav direction="down">
           <DropdownToggle nav className="text-left">
-            <i className="fa fa-user fa-lg mr-2"> {username}</i><i className="fa fa-chevron-down " />
+            <i className="fa fa-user fa-lg mr-2"> {firstName}</i><i className="fa fa-chevron-down " />
           </DropdownToggle>
           <DropdownMenu right>
             <Link to="/userprofile" title="User Profile"><DropdownItem className="text-info"> My Profile</DropdownItem></Link>
-            <Link to="/change-password" title="Change Password"><DropdownItem className="text-info"> Change Password</DropdownItem></Link>
+            {/* <Link to="/change-password" title="Change Password"><DropdownItem className="text-info"> Change Password</DropdownItem></Link> */}
             <a onClick={e => props.onLogout(e)}> <DropdownItem className="text-info">Logout</DropdownItem></a>
           </DropdownMenu>
         </UncontrolledDropdown>

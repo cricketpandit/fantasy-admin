@@ -241,7 +241,7 @@ const Transactions = (props) => {
                       <th className="text-right">Cashback</th>
                       <th className="text-left">Type</th>
                       <th className="text-left">Currency</th>
-                      <th className="text-center">Status</th>
+                      {/* <th className="text-center">Status</th> */}
 
                       <th className="text-center">
                           Created At
@@ -249,6 +249,7 @@ const Transactions = (props) => {
                               {sortIcon(dateSortType)}
                           </span>
                       </th>
+                      <th className="text-center">Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -265,9 +266,9 @@ const Transactions = (props) => {
                             _.startCase(_.camelCase(_.replace(item.rows.txn_type, '_', ' ')))
                           }</td>
                           <td className="text-center text-left">INR</td>
-                          <td>
+                          {/* <td>
                             {getStatus(item)}
-                          </td>
+                          </td> */}
                           <td className="text-center">{moment(item.rows.created_at).format('LLL')}</td>
                           <td className="text-center w-40">
                             {
