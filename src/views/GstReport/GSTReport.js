@@ -247,8 +247,6 @@ const GSTReport = (props) => {
                       <th className="text-right">Amount Added</th>
                       <th className="text-right">GST Amount</th>
                       <th className="text-center">Created At</th>
-
-                      {/* <th>Action</th> */}
                     </tr>
                   </thead>
                   <tbody>
