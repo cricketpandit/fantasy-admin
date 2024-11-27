@@ -15,8 +15,8 @@ const CricketEarningManager = (props) => {
   const session = useSession();
   const alert = useAlert();
   const [contests, setContests] = useState([]);
-  const [totalitems, setTotalItems] = useState('');  
-  const [totalEarning, setTotalEarning] = useState(0);  
+  const [totalitems, setTotalItems] = useState('');
+  const [totalEarning, setTotalEarning] = useState(0);
   const [activepage, setActivePage] = useState(1);
   const [startdate, setStartDate] = useState('');
   const [enddate, setEndDate] = useState('');
@@ -32,7 +32,7 @@ const CricketEarningManager = (props) => {
   const [type, setType] = useState('');
   const [dropdown, setDropdown] = useState([]);
   const [match_dropdown, setMatchDropdown] = useState([]);
- 
+
   const [query, setQuery] = useState({});
   const [exportExcel, setExportExcel] = useState('');
 
@@ -55,7 +55,7 @@ const CricketEarningManager = (props) => {
     let path;
     path = apiUrl.get_series;
 
-    const fr = await Helper.get(token,path);
+    const fr = await Helper.get(token, path);
     const res = await fr.response.json();
 
     if (fr.status === 200) {
@@ -74,11 +74,11 @@ const CricketEarningManager = (props) => {
     let path;
     path = apiUrl.get_all_constest;
 
-    const fr = await Helper.get(token,path);
+    const fr = await Helper.get(token, path);
     const res = await fr.response.json();
 
     if (fr.status === 200) {
-      
+
       if (res.success) {
         console.log("res")
       } else {
@@ -96,17 +96,17 @@ const CricketEarningManager = (props) => {
   }, []);
 
   const handleChange = async (e) => {
-    if(e.target.name === 'series_id') {
+    if (e.target.name === 'series_id') {
       let seriesId = e.target.value
       setSeriesId(e.target.value);
       let path;
       path = apiUrl.series_old_matches + '/' + `${seriesId}`;
-  
-      const fr = await Helper.get(token,path);
+
+      const fr = await Helper.get(token, path);
       const res = await fr.response.json();
-  
+
       if (fr.status === 200) {
-    
+
         if (res.success) {
           setMatchDropdown(res.results.docs || []);
         } else {
@@ -116,10 +116,10 @@ const CricketEarningManager = (props) => {
         alert.error(res.error);
       }
 
-    } else if(e.target.name === 'match_id') {
+    } else if (e.target.name === 'match_id') {
       setMatchId(e.target.value);
     }
-    else if(e.target.name === 'contest_id') {
+    else if (e.target.name === 'contest_id') {
       setContestId(e.target.value);
     }
   }
@@ -132,7 +132,7 @@ const CricketEarningManager = (props) => {
   const handleEndDate = (date) => {
     setEndDate(date);
   };
-  
+
   const handleSearching = async () => {
     setIsserach(true);
     const itemsPerPage = 10;
@@ -157,7 +157,7 @@ const CricketEarningManager = (props) => {
   };
 
   const getData = async (path) => {
-    const fr = await Helper.get(token,path);
+    const fr = await Helper.get(token, path);
     const res = await fr.response.json();
     if (fr.status === 200) {
       if (res.success) {
@@ -169,12 +169,12 @@ const CricketEarningManager = (props) => {
         setIsserach(false);
       } else {
         alert.error(res.msg);
-        setIsserach(false); 
+        setIsserach(false);
         setVisibale(false);
       }
     } else {
       alert.error(res.error);
-      setIsserach(false); 
+      setIsserach(false);
     }
   };
 
@@ -182,7 +182,7 @@ const CricketEarningManager = (props) => {
     let path = apiUrl.get_cricket_contest + '?page=1&itemsPerPage=10';
     getData(path)
   }
-  
+
   const onReset = (e) => {
     setQuery({})
     setStartDate('');
@@ -206,9 +206,9 @@ const CricketEarningManager = (props) => {
           <Card>
             <CardHeader>
               <i className="fa fa-list" /> Cricket Earning Manager
-              </CardHeader>
+            </CardHeader>
             <CardBody>
-            <div className="multipal-searching">
+              <div className="multipal-searching">
                 <Row>
                   <Col lg={12}>
                     <Form>
@@ -264,14 +264,14 @@ const CricketEarningManager = (props) => {
                         </Col>
 
                         <Col md={6}>
-                        <button className="btn btn-primary mr-1 col-md-5 mb-3 mb-md-0" type="button" onClick={handleSearching}><i className="fa fa-search" /> Search{isserach === true && <i className="fa fa-spinner fa-pulse fa-fw ml-1" />}</button>
-                        <button className="btn dark_btn  col-md-5" type="button" onClick={(e) => { onReset(); }}><i className="fa fa-undo" /> Reset</button>
-                      </Col>
+                          <button className="btn btn-primary mr-1 col-md-5 mb-3 mb-md-0" type="button" onClick={handleSearching}><i className="fa fa-search" /> Search{isserach === true && <i className="fa fa-spinner fa-pulse fa-fw ml-1" />}</button>
+                          <button className="btn dark_btn  col-md-5" type="button" onClick={(e) => { onReset(); }}><i className="fa fa-undo" /> Reset</button>
+                        </Col>
 
                       </Row>
                     </Form>
                   </Col>
-         
+
                 </Row>
                 <br></br>
                 <Row>
@@ -285,11 +285,6 @@ const CricketEarningManager = (props) => {
               <div id="reportId" >
                 <Table hover bordered responsive className="mt-3 text-center">
                   <thead>
-                  <tr>
-                      {/* <th colSpan={6}>Total Earning Records - {totalitems}</th>
-                      <th colSpan={5}>Total Earning :{totalEarning?.toFixed(2)} </th> */}
-                    </tr>
-
                     <tr>
                       <th>Sr.No</th>
                       <th>Match Id</th>
@@ -306,8 +301,7 @@ const CricketEarningManager = (props) => {
                   <tbody>
                     {
                       contests.map((item, key) => {
-              
-                        
+
                         let bonusAmount = item.bonus == 0 ? 0 : item.bonus;
                         let totalEntry = item.entry_fee;
                         let totalEarn = totalEntry - item.distributed_amount;
@@ -315,8 +309,8 @@ const CricketEarningManager = (props) => {
                         return (
                           <tr key={key}>
                             <td>{key + 1}</td>
-                            <td>{item.match_id }</td>
-                            <td>{item.localteam } Vs {item.visitorteam }</td>
+                            <td>{item.match_id}</td>
+                            <td>{item.localteam} Vs {item.visitorteam}</td>
                             <td>{moment(item.match_date).format('LLL')}</td>
                             <td>{item.match_status}</td>
                             <td>{item.contest_count}</td>
@@ -325,13 +319,13 @@ const CricketEarningManager = (props) => {
                             {/* <td>{item?.bonus?.toFixed(2)}</td> */}
                             <td>{item?.distributed_amount?.toFixed(2)}</td>
                             <td>{totalEarn?.toFixed(2)}</td>
-                    
+
                           </tr>
                         )
                       })}
                     {_.isEmpty(contests) && <tr><td colSpan="11"><div className="text-center">No Record Found</div></td></tr>}
                   </tbody>
-        
+
                 </Table>
               </div>
               {!_.isEmpty(contests) && <div className="show-pagination technician-page">
