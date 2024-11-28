@@ -16,7 +16,7 @@ const Status = (props) => {
     let SwalConfig = Helper.SwalConfig();
     const result = await Swal.fire(SwalConfig);
     if (result.value) {     
-      let postJson = { user_type: item.user_type, id: item.id, status: changed_status };
+      let postJson = { id: item._id, status: changed_status };
       let path = apiUrl.change_Status;
       const fr = await Helper.post(token,postJson, path);
       const res = await fr.response.json();
