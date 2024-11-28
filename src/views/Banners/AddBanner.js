@@ -232,8 +232,6 @@ const AddBanner = (props) => {
     getData();
     getSeries()
   }, []);
-  console.log('errors1', errors)
-  console.log('errors2', errors?.link?.type)
   return (
     <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
       <Card>
