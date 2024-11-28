@@ -334,7 +334,7 @@ const AddBanner = (props) => {
                     <option value=""> Banner Type </option>
                     <option value="match">Match</option>
                     <option value="invite">Invite</option>
-                    <option value="offer">Offer </option>
+                    {/* <option value="offer">Offer </option> */}
                   </select>
                   {errors.banner_type && <p className="text-danger marginmessage">Banner Type is required</p>}
                 </div>
