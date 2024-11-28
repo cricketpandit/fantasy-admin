@@ -44,7 +44,7 @@ const EditBanner = (props) => {
   const [show_series_match, setShowSeriesMatch] = useState(false);
   const [show_offer, setShowOffer] = useState(false);
   const [sequence, setSequence] = useState('');
-  const [banner_type, setBannerType] = useState('');
+  const [banner_type, setBannerType] = useState('match');
   const [fantasy_type, setFantasyType] = useState('');
   const [mediaType, setMediaType] = useState('');
   const [buttonstate, setButtonState] = useState(false);
@@ -123,7 +123,7 @@ const EditBanner = (props) => {
       let postJson = {
         id: id,
         title: data.title.trim(),
-        banner_type: data?.banner_type,
+        banner_type: banner_type,
         fantasy_type: fantasy_type,
         media_type: 'image',//data.type,
         sequence: data.sequence,
@@ -199,8 +199,7 @@ const EditBanner = (props) => {
       getSeriesMatches(bannerData.series_id);
       setMatchId(bannerData.match_id);
       setId(bannerData.id);
-  
-      setDropdown(seriesData.results || []);
+      setDropdown(seriesData || []);
       setOfferDropdown(offerData.results || []);
   
     } catch (error) {
@@ -258,7 +257,6 @@ const EditBanner = (props) => {
   useEffect(() => {
     getData();
   }, []);
-
   return (
       <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
         <Card>
@@ -343,7 +341,7 @@ const EditBanner = (props) => {
                 </FormGroup>
               </Col>
 
-              <Col md={6}>
+              {/* <Col md={6}>
                 <FormGroup className='row'>
                   <Label className={'col-md-2 pull-left mt-2'}>Banner Type</Label>
                   <div className='input_grp  col-md-8'>
@@ -352,12 +350,12 @@ const EditBanner = (props) => {
                       <option value=""> Banner Type </option>
                       <option value="match">Match</option>
                       <option value="invite">Invite</option>
-                      {/* <option value="offer">Offer</option> */}
+                      <option value="offer">Offer</option>
                     </select>
                     {errors.banner_type && <p className="text-danger marginmessage">Banner Type is required</p>}
                   </div>
                 </FormGroup>
-              </Col>
+              </Col> */}
               <Col md={6}>
                 <FormGroup className='row'>
                 <Label className={'col-md-2 pull-left mt-2'}>Banner Sequence</Label>
@@ -382,7 +380,7 @@ const EditBanner = (props) => {
 
                 </FormGroup>
               </Col>)}
-              {show_series_match === true && (<Col md={6}>
+              <Col md={6}>
                 <FormGroup className='row'>
                   <Label className={'col-md-2 pull-left mt-2'}>Series</Label>
                   <div className='input_grp  col-md-8'>
@@ -397,8 +395,8 @@ const EditBanner = (props) => {
                   </div>
 
                 </FormGroup>
-              </Col>)}
-              {show_series_match === true && (<Col md={6}>
+              </Col>
+              <Col md={6}>
                 <FormGroup className='row'>
                   <Label className={'col-md-2 pull-left mt-2'}>Matches</Label>
                   <div className='input_grp  col-md-8'>
@@ -412,7 +410,7 @@ const EditBanner = (props) => {
                     </select>
                   </div>
                 </FormGroup>
-              </Col>)}
+              </Col>
 
             </Row>
           </CardBody>

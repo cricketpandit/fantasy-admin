@@ -114,7 +114,7 @@ const AddBanner = (props) => {
       if (resp?.status === 200) {
         let postJson = {
           title: data.title.trim(),
-          banner_type: data?.banner_type,
+          banner_type: 'match',
           fantasy_type: "cricket",
           media_type: 'image',
           sequence: data.sequence,
@@ -323,7 +323,7 @@ const AddBanner = (props) => {
                 </div>
               </FormGroup>
             </Col>
-            <Col md={6}>
+            {/* <Col md={6}>
               <FormGroup className='row'>
                 <Label className={'col-md-2 pull-left mt-2'}>Banner Type</Label>
                 <div className='input_grp col-md-8'>
@@ -331,12 +331,12 @@ const AddBanner = (props) => {
                     <option value=""> Banner Type </option>
                     <option value="match">Match</option>
                     <option value="invite">Invite</option>
-                    {/* <option value="offer">Offer </option> */}
+                    <option value="offer">Offer </option>
                   </select>
                   {errors.banner_type && <p className="text-danger marginmessage">Banner Type is required</p>}
                 </div>
               </FormGroup>
-            </Col>
+            </Col> */}
             <Col md={6}>
               <FormGroup className='row'>
                 <Label className={'col-md-2 pull-left mt-2'}>Banner Sequence</Label>
@@ -362,7 +362,7 @@ const AddBanner = (props) => {
 
               </FormGroup>
             </Col>)}
-            {show_series_match === true && (<Col md={6}>
+           <Col md={6}>
               <FormGroup className='row'>
                 <Label className={'col-md-2 pull-left mt-2'}>Series</Label>
                 <select className={"form-control col-md-8"} name="series_id" onChange={handleChange}>
@@ -375,8 +375,8 @@ const AddBanner = (props) => {
                 </select>
 
               </FormGroup>
-            </Col>)}
-            {show_series_match === true && (<Col md={6}>
+            </Col>
+            <Col md={6}>
               <FormGroup className='row'>
                 <Label className={'col-md-2 pull-left mt-2'}>Matches</Label>
                 <select className={"form-control col-md-8"} defaultValue={match_id} name="match_id" onChange={handleChange}>
@@ -388,7 +388,7 @@ const AddBanner = (props) => {
                   }
                 </select>
               </FormGroup>
-            </Col>)}
+            </Col>
           </Row>
         </CardBody>
         <CardFooter>
