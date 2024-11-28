@@ -5,27 +5,28 @@ import apiUrl from '../../../../constants/apiPath';
 import { Button, Card, CardBody, CardFooter, FormGroup, Label, Col, Row } from 'reactstrap';
 import { useAlert } from 'react-alert';
 import useSession from 'react-session-hook';
+import _ from "lodash";
 const T10Batting = (props) => {
     const session = useSession();
     const alert = useAlert();
-    const { register, handleSubmit} = useForm();
+    const { register, handleSubmit, errors } = useForm();
     const [loading, setLoading] = useState(false);
     const [t10Data, setData] = useState({});
     const [token] = useState(session.token);
-        
+
     const onSubmit = async data => {
-        setLoading(true);      
-        let postJson =  {   
-                            battingRun: data.battingRun.trim(), 
-                            battingBoundary: data.battingBoundary.trim(),
-                            battingSix: data.battingSix.trim(),
-                            t10Bonus30Runs: data.t10Bonus30Runs.trim(),
-                            t10Bonus50Runs: data.t10Bonus50Runs.trim(),
-                            battingDuck: data.battingDuck.trim()
-                        };        
+        setLoading(true);
+        let postJson = {
+            battingRun: data.battingRun.trim(),
+            battingBoundary: data.battingBoundary.trim(),
+            battingSix: data.battingSix.trim(),
+            t10Bonus30Runs: data.t10Bonus30Runs.trim(),
+            t10Bonus50Runs: data.t10Bonus50Runs.trim(),
+            battingDuck: data.battingDuck.trim()
+        };
 
         let path = apiUrl.update_t10_batting;
-        const fr = await Helper.post(token,postJson,path);
+        const fr = await Helper.post(token, postJson, path);
         const res = await fr.response.json();
         if (fr.status === 200) {
             if (res.success) {
@@ -43,7 +44,7 @@ const T10Batting = (props) => {
 
     const getData = async () => {
         let path = apiUrl.get_t10_batting;
-        const fr = await Helper.get(token,path);
+        const fr = await Helper.get(token, path);
         const res = await fr.response.json();
         if (fr.status === 200) {
             if (res.success) {
@@ -57,10 +58,14 @@ const T10Batting = (props) => {
     };
 
     useEffect(() => {
-        
         getData();
     }, []);
 
+    useEffect(() => {
+        if (!_.isEmpty(errors)) {
+            alert.error('Please make sure to enter values in all fields');
+        }
+    }, [errors]);
     return (
         <React.Fragment>
             <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
@@ -105,7 +110,7 @@ const T10Batting = (props) => {
                             <Col md={6}>
                                 <FormGroup>
                                     <Label className={'col-md-4 pull-left mt-2'}>Dismissal for a duck:<br></br>
-																	<small>Batsman, Wicket-Keeper & All-Rounder</small></Label>
+                                        <small>Batsman, Wicket-Keeper & All-Rounder</small></Label>
                                     <input type="number" step="0.1" name="battingDuck" placeholder="Dismissal for a duck" autoComplete="off"
                                         className="form-control col-md-8" defaultValue={t10Data.battingDuck} ref={register({ required: 'Required' })} />
                                 </FormGroup>

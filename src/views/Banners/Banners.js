@@ -146,7 +146,7 @@ const Banners = (props) => {
                 </Link>
               </div>
             </CardHeader>
-            <CardBody>
+            <CardBody style={{minHeight:"370px"}}>
               <div className="multipal-searching">
                 <Row>
                   <Col xl={9}>
@@ -185,7 +185,7 @@ const Banners = (props) => {
                           <FormGroup className="mb-xl-0">
                             <select type="text" placeholder="Status" className="form-control" value={serachstatus}
                               onChange={(e) => { setSerachStatus(e.target.value) }} >
-                              <option value="">Select User Status</option>
+                              <option value="">Select Status</option>
                               <option value='active'>Active</option>
                               <option value='inactive'>Inactive</option>
                             </select>

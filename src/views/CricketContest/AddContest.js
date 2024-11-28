@@ -683,7 +683,7 @@ const AddContest = (props) => {
                       );
                     })
                   }
-                  {contestType !== 'free' && <tr><td colSpan="5" className='text-right pr-4 remaining'><strong>Remaining Percentage :  <span className=''>{total_percentage?.toFixed(2)}</span></strong></td> <td colSpan="4" className='text-left pl-4 remaining'><strong>Remaining Amount : <span className=''>{remaining_amount?.toFixed(2)}</span></strong></td></tr>}
+                  {contestType !== 'free' && <tr><td colSpan="5" className='text-right pr-4 remaining'><strong>Remaining Percentage : {total_percentage?.toFixed(2)}</strong></td> <td colSpan="4" className='text-left pl-4 remaining'><strong>Remaining Amount : {remaining_amount?.toFixed(2)}</strong></td></tr>}
                 </tbody>
               </Table>
               <div className='bottom-outer d-flex align-items-center justify-content-between'>

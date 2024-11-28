@@ -5,11 +5,12 @@ import apiUrl from '../../../../constants/apiPath';
 import { Button, Card, CardBody, CardFooter, FormGroup, Label, Col, Row } from 'reactstrap';
 import { useAlert } from 'react-alert';
 import useSession from 'react-session-hook';
+import _ from "lodash";
 
 const T10Other = (props) => {
     const session = useSession();
     const alert = useAlert();
-    const { register, handleSubmit, } = useForm();
+    const { register, handleSubmit,errors } = useForm();
     const [loading, setLoading] = useState(false);
     const [t10Data, setData] = useState({});
     const [token] = useState(session.token);
@@ -57,7 +58,11 @@ const T10Other = (props) => {
     useEffect(() => {
         getData();
     }, []);
-
+    useEffect(() => {
+        if (!_.isEmpty(errors)) {
+            alert.error('Please make sure to enter values in all fields');
+        }
+    }, [errors]);
 
     return (
         <React.Fragment>

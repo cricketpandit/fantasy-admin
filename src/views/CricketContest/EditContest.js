@@ -105,7 +105,7 @@ const EditContest = (props) => {
         setBonus(res.results.bonus);
         setMaxTeamJoinCount(res.results.max_team_join_count);
         setwinAmount(res.results.winning_amount);
-        setCategoryId(res.results.category_id.id);
+        setCategoryId(res.results.category_id);
         setContestType(res.results.contest_type);
         setTotalAdminFee(res.results.admin_profit);
         setPlateFormFee(res.results.plateform_Fee);

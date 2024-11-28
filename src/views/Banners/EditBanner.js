@@ -52,6 +52,7 @@ const EditBanner = (props) => {
   const [presignedUrl, setPresignedUrl] = useState("");
 
   const handleChange = (e) => {
+    console.log('e.target.value', e.target.value)
     if (e.target.name === 'banner_type') {
       setBannerType(e.target.value);
       if (e.target.value == 'match') {
@@ -79,6 +80,9 @@ const EditBanner = (props) => {
   }
 
   const getSeriesMatches = async (sr_id) => {
+    if(!sr_id){
+      return
+    }
     let path;
     path = apiUrl.get_series_all_matches + '/' + sr_id;
 
@@ -259,7 +263,7 @@ const EditBanner = (props) => {
       <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
         <Card>
           <CardHeader>
-            <CardTitle className=""><h4>Edit Bannerfdf</h4></CardTitle>
+            <CardTitle className=""><h4>Edit Banner</h4></CardTitle>
           </CardHeader>
           <CardBody>
             <Row>
@@ -327,7 +331,7 @@ const EditBanner = (props) => {
                   <Label className={'col-md-2 pull-left mt-2'}>Banner Image</Label>
                   <div className='input_grp  col-md-8'>
                     <input type="file" onChange={onImageChange} name="banner_pic" className="form-control" autoComplete="off" placeholder="Banner Image" />                   
-                    <span className={"pull-left text-white"}  > (Please enter only .png, .jpg .gif and .jpeg images.) </span>
+                    <span className={"pull-left text-dark"} > (Please enter only .png, .jpg .gif and .jpeg, .jfif images.) </span>
                     <ErrorMessage errors={errors} name="banner_pic">
                       {({ message }) => <p className={"text-danger"}>{message}</p>}
                     </ErrorMessage>

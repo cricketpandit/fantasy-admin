@@ -10,7 +10,7 @@ const View = (props) => {
   const [preview, setPreview] = useState('');
    useEffect(() => {
     setItem(props.item);
-    setPreview(props.item.image);
+    setPreview(props.item.profilePic);
   }, [props.item]);
 
   return (
@@ -23,13 +23,13 @@ const View = (props) => {
             <Col md={6}>
               <FormGroup>
                 <Label><strong>Username</strong></Label>
-                <div>{item.username}</div>
+                <div>{item.userName}</div>
               </FormGroup>
             </Col>
             <Col md={6}>
               <FormGroup>
                 <Label><strong>Full Name</strong></Label>
-                <div>{(item.full_name)}</div>
+                <div>{(item.fullName)}</div>
               </FormGroup>
             </Col>
  
@@ -74,32 +74,26 @@ const View = (props) => {
             <Col md={6}>
               <FormGroup>
                 <Label><strong>Deposit Balance</strong></Label>
-                <div>INR {item.deposit_amount?.toFixed(2)}</div>
+                <div>INR {item.depositAmount?.toFixed(2)}</div>
               </FormGroup>
             </Col>
             <Col md={6}>
               <FormGroup>
                 <Label><strong>Winning Balance</strong></Label>
-                <div>INR {item.winngs_amount?.toFixed(2)}</div>
+                <div>INR {item.winningAmount?.toFixed(2)}</div>
               </FormGroup>
             </Col>
             <Col md={6}>
               <FormGroup>
                 <Label><strong>Bonus</strong></Label>
-                <div>INR {item.bonus?.toFixed(2)}</div>
-              </FormGroup>
-            </Col>
-            <Col md={6}>
-              <FormGroup>
-                <Label><strong>Free Cash</strong></Label>
-                <div>INR {item.free_cash?.toFixed(2)}</div>
+                <div>INR {item.bonusAmount?.toFixed(2)}</div>
               </FormGroup>
             </Col>
 
             <Col md={6}>
               <FormGroup>
                 <Label><strong>Total Balance</strong></Label>
-                <div>INR {item.total_balance?.toFixed(2)}</div>
+                <div>INR {item.walletAmount?.toFixed(2)}</div>
               </FormGroup>
             </Col>
 

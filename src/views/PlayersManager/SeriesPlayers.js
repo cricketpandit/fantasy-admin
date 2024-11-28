@@ -42,7 +42,7 @@ const SeriesPlayers = (props) => {
   }
 
   const pageData = async (page = activepage) => {
-    setVisibale(true);
+    setVisibale(false);
     const itemsPerPage = 10;
     let path;
     setActivePage(page)
@@ -99,7 +99,7 @@ const SeriesPlayers = (props) => {
     
 
   const getData = async () => {
-    setVisibale(true);
+    setVisibale(false);
     let path;
 
     path = apiUrl.get_series;
@@ -123,7 +123,7 @@ const SeriesPlayers = (props) => {
   };
 
   const getTeams = async (seriesId) => {
-    setVisibale(true);
+    setVisibale(false);
     let path;
     path = apiUrl.get_series_teams + '?series_id=' + `${seriesId}`;
 
@@ -250,7 +250,7 @@ useEffect(() => {
                       <th className="text-left">Name</th>
                       <th className="text-left upload_img_w">Image</th>
                       <th className="text-center">Role</th>
-                      <th className="text-center">Type</th>
+                      {/* <th className="text-center">Type</th> */}
                       <th className="text-left">Team</th>
                       <th className="text-left">Series Name</th>
                       <th className="text-right">Credits</th>
