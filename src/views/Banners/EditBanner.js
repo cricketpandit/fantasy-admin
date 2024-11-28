@@ -182,8 +182,7 @@ const EditBanner = (props) => {
         fetchData(apiUrl.get_series),
         fetchData(apiUrl.get_coupons_for_banners),
       ]);
-  
-       
+         
       setTitle(bannerData.title);
       setStartDate(bannerData.start_date || '');
       setEndDate(bannerData.end_date || '');
