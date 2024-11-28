@@ -320,7 +320,7 @@ const AddBanner = (props) => {
                   <ErrorMessage errors={errors} name="banner_pic">
                     {({ message }) => <p className={"text-danger"}>{message}</p>}
                   </ErrorMessage>
-                  {preview && <img id="target" alt="Banner Image" className={'mt-3 rounded'} height={250} src={preview} /> }
+                  {preview && <img id="target" alt="Banner Image" className={'mt-3 rounded'} height={250} src={preview} />}
                   <img id="validateBanner" alt="Banner Image" className='d-none' src={preview} />
                 </div>
               </FormGroup>
@@ -349,7 +349,6 @@ const AddBanner = (props) => {
                 </div>
               </FormGroup>
             </Col>
-
             {show_offer === true && (<Col md={6}>
               <FormGroup className='row'>
                 <Label className={'col-md-2 pull-left mt-2'}>Offer</Label>
