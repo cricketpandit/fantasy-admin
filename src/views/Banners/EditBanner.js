@@ -331,7 +331,7 @@ const EditBanner = (props) => {
                   <Label className={'col-md-2 pull-left mt-2'}>Banner Image</Label>
                   <div className='input_grp  col-md-8'>
                     <input type="file" onChange={onImageChange} name="banner_pic" className="form-control" autoComplete="off" placeholder="Banner Image" />                   
-                    <span className={"pull-left text-white"}  > (Please enter only .png, .jpg .gif and .jpeg images.) </span>
+                    <span className={"pull-left text-dark"} > (Please enter only .png, .jpg .gif and .jpeg, .jfif images.) </span>
                     <ErrorMessage errors={errors} name="banner_pic">
                       {({ message }) => <p className={"text-danger"}>{message}</p>}
                     </ErrorMessage>
