@@ -362,7 +362,7 @@ const AddBanner = (props) => {
 
               </FormGroup>
             </Col>)}
-           <Col md={6}>
+            <Col md={6}>
               <FormGroup className='row'>
                 <Label className={'col-md-2 pull-left mt-2'}>Series</Label>
                 <select className={"form-control col-md-8"} name="series_id" onChange={handleChange}>
