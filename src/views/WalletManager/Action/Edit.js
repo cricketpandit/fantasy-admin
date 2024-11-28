@@ -39,21 +39,22 @@ const Edit = (props) => {
     };
     const walletAmount = () =>{
         let walletAmountValue;
+        console.log('WalletType',WalletType, item.email)
         if (WalletType === 'Free Cash') {
             walletAmountValue = item.free_cash?.toFixed(2);
         } else if (WalletType === 'Deposit') {
-            walletAmountValue = item.deposit_amount?.toFixed(2);
+            walletAmountValue = item.depositAmount?.toFixed(2);
         } else if (WalletType === 'Bonus') {
-            walletAmountValue = item.bonus?.toFixed(2);
+            walletAmountValue = item.bonusAmount?.toFixed(2);
         } else {
-            walletAmountValue = item.winngs_amount?.toFixed(2);
+            walletAmountValue = item.winningAmount?.toFixed(2);
         }
         return walletAmountValue;
     }
     useEffect(() => {
         setItem(props.item);
         setType(props.type);
-        setFullname(props.item.full_name);
+        setFullname(props.item.fullName);
     }, [props]);
     return (
         <div className={"inline-btn"}>
@@ -72,13 +73,13 @@ const Edit = (props) => {
                             <Col md={6}>
                                 <FormGroup>
                                     <Label><strong>Mobile</strong></Label>
-                                    <div>{item.phone}</div>
+                                    <div>{item.mobile}</div>
                                 </FormGroup>
                             </Col>
                             <Col md={6}>
                                 <FormGroup>
                                     <Label><strong>User Amount</strong></Label>
-                                    <div> {walletAmount}</div>
+                                    <div> {walletAmount()}</div>
                                 </FormGroup>
                             </Col>
                             <Col md={6}>

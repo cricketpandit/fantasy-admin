@@ -190,7 +190,8 @@ const CricketEarningManager = (props) => {
     setKeyWords('');
     setSerachStatus('');
     setType('');
-    getData();
+    // getData();
+    setMatchDropdown([])
     setSeriesId('');
     setMatchId('');
     setContestId('');
