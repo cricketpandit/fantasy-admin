@@ -71,8 +71,8 @@ const Users = (props) => {
       itemsPerPage: itemsPerPage,
       keyword: keywords,
       // verifystatus: verifystatus,
-      start_date: (startdate === '' || startdate == null ? '' : moment(startdate).format('YYYY-MM-DD')),
-      end_date: (enddate === '' || enddate == null ? '' : moment(enddate).format('YYYY-MM-DD')),
+      user_start_date: (startdate === '' || startdate == null ? '' : moment(startdate).format('YYYY-MM-DD')),
+      user_end_date: (enddate === '' || enddate == null ? '' : moment(enddate).format('YYYY-MM-DD')),
       status: serachstatus
     }
     setQuery(queries)
@@ -98,8 +98,8 @@ const Users = (props) => {
       itemsPerPage: itemsPerPage,
       keyword: keywords,
       // verifystatus: verifystatus,
-      start_date: (startdate === '' || startdate == null ? '' : moment(startdate).format('YYYY-MM-DD')),
-      end_date: (enddate === '' || enddate == null ? '' : moment(enddate).format('YYYY-MM-DD')),
+      user_start_date: (startdate === '' || startdate == null ? '' : moment(startdate).format('YYYY-MM-DD')),
+      user_end_date: (enddate === '' || enddate == null ? '' : moment(enddate).format('YYYY-MM-DD')),
       status: serachstatus,
       nameSort: nameSort
     }
@@ -127,8 +127,8 @@ const Users = (props) => {
       itemsPerPage: itemsPerPage,
       keyword: keywords,
       // verifystatus: verifystatus,
-      start_date: (startdate === '' || startdate == null ? '' : moment(startdate).format('YYYY-MM-DD')),
-      end_date: (enddate === '' || enddate == null ? '' : moment(enddate).format('YYYY-MM-DD')),
+      user_start_date: (startdate === '' || startdate == null ? '' : moment(startdate).format('YYYY-MM-DD')),
+      user_end_date: (enddate === '' || enddate == null ? '' : moment(enddate).format('YYYY-MM-DD')),
       status: serachstatus,
       dateSort: dateSort
     }
