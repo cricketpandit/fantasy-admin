@@ -24,7 +24,7 @@ const ExtendDate = (props) => {
     
 
     const updateDate = async () => {
-        let SwalConfig = Helper.SwalConfig();
+        let SwalConfig = Helper.SwalDateConfig();
         const result = await Swal.fire(SwalConfig);
         if(_.isEmpty(TimeValue) || _.isEmpty(time_new) || _.isEmpty(timestamp_start.toString()))
         {

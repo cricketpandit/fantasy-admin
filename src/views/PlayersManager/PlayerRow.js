@@ -60,10 +60,10 @@ const PlayerRow = (props) => {
           player_id: player_id,
           player_credit: player_credit,
           playing_role: playing_role,
-          t10: t10,
-          t20: t20,
-          odi: odi,
-          test: test,
+          // t10: t10,
+          // t20: t20,
+          // odi: odi,
+          // test: test,
           is_playing: isPlaying,
           player_image: presignedKey,
         };
@@ -174,22 +174,22 @@ const PlayerRow = (props) => {
           </select>
         </FormGroup>
       </td>
-      <td className="text-center w-40">
-        <span>
+      {/* <td className="text-center w-40">
+        <span style={{color:'#000'}}>
           <input type="checkbox" name="t10" value={t10} checked={t10} onChange={() => setT10(!t10)} /> T10 &nbsp;
         </span>
-        <span>
+        <span style={{color:'#000'}}>
           <input type="checkbox" name="t20" value={t20} checked={t20} onChange={() => setT20(!t20)} /> T20 &nbsp;
         </span>
-        <span>
+        <span style={{color:'#000'}}>
           {" "}
           <input type="checkbox" name="odi" value={odi} checked={odi} onChange={() => setOdi(!odi)} /> ODI &nbsp;
         </span>
-        <span>
+        <span style={{color:'#000'}}>
           {" "}
           <input type="checkbox" name="test" checked={test} onChange={() => setTest(!test)} /> TEST &nbsp;
         </span>
-      </td>
+      </td> */}
       <td className="text-left w-40">{item.team_name}</td>
       <td className="text-left w-40">{item.series_name}</td>
       <td className="text-right w-40">

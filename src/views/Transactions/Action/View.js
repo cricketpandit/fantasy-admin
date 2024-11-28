@@ -41,24 +41,6 @@ const View = (props) => {
             </Col>
             <Col md={6}>
               <FormGroup>
-                <Label><strong>Order Id</strong></Label>
-                <div>{item.order_id}</div>
-              </FormGroup>
-            </Col>
-            <Col md={6}>
-              <FormGroup>
-                <Label><strong>Currency</strong></Label>
-                <div>{item.currency}</div>
-              </FormGroup>
-            </Col>
-            <Col md={6}>
-              <FormGroup>
-                <Label><strong>Gateway Name</strong></Label>
-                <div>{_.replace(item.gateway_name, '_', ' ')}</div>
-              </FormGroup>
-            </Col>
-            <Col md={6}>
-              <FormGroup>
                 <Label><strong>Transaction Id</strong></Label>
                 <div>{item.txn_id}</div>
               </FormGroup>
@@ -66,7 +48,7 @@ const View = (props) => {
             <Col md={6}>
               <FormGroup>
                 <Label><strong>Transaction Amount</strong></Label>
-                <div>{item.txn_amount}</div>
+                <div>INR {item.txn_amount}</div>
               </FormGroup>
             </Col>
             <Col md={6}>
@@ -90,39 +72,9 @@ const View = (props) => {
             <Col md={6}>
               <FormGroup>
                 <Label><strong>Transaction Date</strong></Label>
-                <div>{item.txn_date}</div>
-              </FormGroup>
-            </Col>
-            <Col md={6}>
-              <FormGroup>
-                <Label><strong>Bank Transaction Id</strong></Label>
-                <div>{item.banktxn_id}</div>
-              </FormGroup>
-            </Col>
-            <Col md={6}>
-              <FormGroup>
-                <Label><strong>Checksum</strong></Label>
-                <div>{_.startCase(_.camelCase(_.replace(item.checksum, '_', ' ')))}</div>
-              </FormGroup>
-            </Col>
-            <Col md={6}>
-              <FormGroup>
-                <Label><strong>Local Transaction Id</strong></Label>
-                <div>{item.local_txn_id}</div>
-              </FormGroup>
-            </Col>
-            <Col md={6}>
-              <FormGroup>
-                <Label><strong>Status</strong></Label>
-                <div> {getStatus(item)} </div>
-              </FormGroup>
-            </Col>
-            <Col md={6}>
-              <FormGroup>
-                <Label><strong>Create Date</strong></Label>
                 <div>{moment(item.created_at).format('LLL')}</div>
               </FormGroup>
-            </Col>          
+            </Col>            
           </Row>
         </ModalBody>
         <ModalFooter>

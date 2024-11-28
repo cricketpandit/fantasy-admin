@@ -70,13 +70,13 @@ const Users = (props) => {
       page: page,
       itemsPerPage: itemsPerPage,
       keyword: keywords,
-      verifystatus: verifystatus,
+      // verifystatus: verifystatus,
       start_date: (startdate === '' || startdate == null ? '' : moment(startdate).format('YYYY-MM-DD')),
       end_date: (enddate === '' || enddate == null ? '' : moment(enddate).format('YYYY-MM-DD')),
       status: serachstatus
     }
     setQuery(queries)
-    path = apiUrl.get_users + '?uniqueId=' + `${uniqueId}` + '&page=' + `${page}` + '&itemsPerPage=' + `${itemsPerPage}` + '&keyword=' + `${keywords}` + '&user_start_date=' + `${startdate === '' || startdate == null ? '' : moment(startdate).format('YYYY-MM-DD')}` + '&user_end_date=' + `${enddate === '' || enddate == null ? moment(startdate).format('YYYY-MM-DD') : moment(enddate).format('YYYY-MM-DD')}` + '&status=' + `${serachstatus}` + '&verifystatus=' + `${verifystatus}`;
+    path = apiUrl.get_users + '?uniqueId=' + `${uniqueId}` + '&page=' + `${page}` + '&itemsPerPage=' + `${itemsPerPage}` + '&keyword=' + `${keywords}` + '&user_start_date=' + `${(startdate === '' || startdate == null) ? '' : moment(startdate).format('YYYY-MM-DD')}` + '&user_end_date=' + `${(enddate === '' || enddate == null) ? '' : moment(enddate).format('YYYY-MM-DD')}` + '&status=' + `${serachstatus}`;
     getData(path);
   };
   const handleNameSort = async () => {
@@ -97,14 +97,14 @@ const Users = (props) => {
       page: page,
       itemsPerPage: itemsPerPage,
       keyword: keywords,
-      verifystatus: verifystatus,
+      // verifystatus: verifystatus,
       start_date: (startdate === '' || startdate == null ? '' : moment(startdate).format('YYYY-MM-DD')),
       end_date: (enddate === '' || enddate == null ? '' : moment(enddate).format('YYYY-MM-DD')),
       status: serachstatus,
       nameSort: nameSort
     }
     setQuery(queries)
-    path = apiUrl.get_users + '?page=' + `${page}` + '&itemsPerPage=' + `${itemsPerPage}` + '&keyword=' + `${keywords}` + '&user_start_date=' + `${startdate === '' || startdate === null ? '' : moment(startdate).format('YYYY-MM-DD')}` + '&user_end_date=' + `${enddate === '' || enddate == null ? '' : moment(enddate).format('YYYY-MM-DD')}` + '&status=' + `${serachstatus}` + '&nameSort=' + `${nameSort}` + '&verifystatus=' + `${verifystatus}`;
+    path = apiUrl.get_users + '?page=' + `${page}` + '&itemsPerPage=' + `${itemsPerPage}` + '&keyword=' + `${keywords}` + '&user_start_date=' + `${startdate === '' || startdate === null ? '' : moment(startdate).format('YYYY-MM-DD')}` + '&user_end_date=' + `${enddate === '' || enddate == null ? '' : moment(enddate).format('YYYY-MM-DD')}` + '&status=' + `${serachstatus}` + '&nameSort=' + `${nameSort}`;
     getData(path);
 
   }
@@ -126,14 +126,14 @@ const Users = (props) => {
       page: page,
       itemsPerPage: itemsPerPage,
       keyword: keywords,
-      verifystatus: verifystatus,
+      // verifystatus: verifystatus,
       start_date: (startdate === '' || startdate == null ? '' : moment(startdate).format('YYYY-MM-DD')),
       end_date: (enddate === '' || enddate == null ? '' : moment(enddate).format('YYYY-MM-DD')),
       status: serachstatus,
       dateSort: dateSort
     }
     setQuery(queries)
-    path = apiUrl.get_users + '?page=' + `${page}` + '&itemsPerPage=' + `${itemsPerPage}` + '&keyword=' + `${keywords}` + '&user_start_date=' + `${startdate === '' || startdate === null ? '' : moment(startdate).format('YYYY-MM-DD')}` + '&user_end_date=' + `${enddate === '' || enddate == null ? '' : moment(enddate).format('YYYY-MM-DD')}` + '&status=' + `${serachstatus}` + '&dateSort=' + `${dateSort}` + '&verifystatus=' + `${verifystatus}`;
+    path = apiUrl.get_users + '?page=' + `${page}` + '&itemsPerPage=' + `${itemsPerPage}` + '&keyword=' + `${keywords}` + '&user_start_date=' + `${startdate === '' || startdate === null ? '' : moment(startdate).format('YYYY-MM-DD')}` + '&user_end_date=' + `${enddate === '' || enddate == null ? '' : moment(enddate).format('YYYY-MM-DD')}` + '&status=' + `${serachstatus}` + '&dateSort=' + `${dateSort}`;
     getData(path);
 
   }
@@ -304,7 +304,7 @@ const Users = (props) => {
                           </FormGroup>
                         </Col>
 
-                        <Col md={3} sm={6}>
+                        {/* <Col md={3} sm={6}>
                           <FormGroup className="mb-xl-0">
                             <select type="text" placeholder="Verify" className="form-control" value={verifystatus}
                               onChange={(e) => { setVerifyStatus(e.target.value) }} >
@@ -313,7 +313,7 @@ const Users = (props) => {
                               <option value='unVerified'>Not Verified</option>
                             </select>
                           </FormGroup>
-                        </Col>
+                        </Col> */}
 
                         <Col md={6} sm={6} className="">
                           <button className="btn btn-primary ml-1" type="button" onClick={handleSearching}><i className="fa fa-search" /> Search{isserach === true && <i className="fa fa-spinner fa-pulse fa-fw ml-1" />}</button>

@@ -166,6 +166,17 @@ const helper = {
       reverseButtons: true
     }
   },
+  SwalDateConfig: (message = "You want to extend the time") => {
+    return {
+      title: 'Are you sure?',
+      text: message,
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No',
+      reverseButtons: true
+    }
+  },
   andOperator:(firstCondition,secondCondition)=>{
     return firstCondition && secondCondition
   },

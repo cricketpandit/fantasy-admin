@@ -52,6 +52,7 @@ const EditBanner = (props) => {
   const [presignedUrl, setPresignedUrl] = useState("");
 
   const handleChange = (e) => {
+    console.log('e.target.value', e.target.value)
     if (e.target.name === 'banner_type') {
       setBannerType(e.target.value);
       if (e.target.value == 'match') {
@@ -79,6 +80,9 @@ const EditBanner = (props) => {
   }
 
   const getSeriesMatches = async (sr_id) => {
+    if(!sr_id){
+      return
+    }
     let path;
     path = apiUrl.get_series_all_matches + '/' + sr_id;
 
@@ -259,7 +263,7 @@ const EditBanner = (props) => {
       <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
         <Card>
           <CardHeader>
-            <CardTitle className=""><h4>Edit Bannerfdf</h4></CardTitle>
+            <CardTitle className=""><h4>Edit Banner</h4></CardTitle>
           </CardHeader>
           <CardBody>
             <Row>

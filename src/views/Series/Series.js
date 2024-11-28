@@ -181,7 +181,7 @@ const Series = (props) => {
                       <th className="text-left">Series Name</th>
                       <th className="text-left">Short Name</th>
                       <th className="text-right">Inactive Matches</th>
-                      <th className="text-right">Is Favourite</th>
+                      {/* <th className="text-right">Is Favourite</th> */}
                       <th className="text-center">Status</th>
                       <th className="text-center">Action</th>
                     </tr>
@@ -194,9 +194,9 @@ const Series = (props) => {
                           <td className="text-left">{item.rows.name}</td>
                           <td className="text-left">{item.rows.short_name}</td>
                           <td className="text-right">{item.rows.numOfinactive}</td>
-                          <td className="text-right">
+                          {/* <td className="text-right">
                             <span> <input type="checkbox" name="isFavourite" checked={item.rows.isFavourite || false} onChange={() => toggleFavourite(!item.rows.isFavourite, item.rows.id_api)} /></span>
-                          </td>
+                          </td> */}
                           <td className="text-center">
                             {
                               <Status item={item.rows} refreshData={pageData} />
