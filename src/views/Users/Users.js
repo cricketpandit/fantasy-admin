@@ -117,7 +117,6 @@ const Users = (props) => {
       setDateSortType('asc');
       dateSort = 'asc';
     }
-
     const itemsPerPage = 10;
     let path;
     let page = 1;
@@ -135,7 +134,6 @@ const Users = (props) => {
     setQuery(queries)
     path = apiUrl.get_users + '?page=' + `${page}` + '&itemsPerPage=' + `${itemsPerPage}` + '&keyword=' + `${keywords}` + '&user_start_date=' + `${startdate === '' || startdate === null ? '' : moment(startdate).format('YYYY-MM-DD')}` + '&user_end_date=' + `${enddate === '' || enddate == null ? '' : moment(enddate).format('YYYY-MM-DD')}` + '&status=' + `${serachstatus}` + '&dateSort=' + `${dateSort}`;
     getData(path);
-
   }
 
   const resetSearch = async () => {
