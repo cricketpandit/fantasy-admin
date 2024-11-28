@@ -322,7 +322,6 @@ const AddBanner = (props) => {
                   </ErrorMessage>
                   {preview && <img id="target" alt="Banner Image" className={'mt-3 rounded'} height={250} src={preview} /> }
                   <img id="validateBanner" alt="Banner Image" className='d-none' src={preview} />
-
                 </div>
               </FormGroup>
             </Col>
