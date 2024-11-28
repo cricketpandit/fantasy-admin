@@ -45,5 +45,4 @@ const Status = (props) => {
     </FormGroup>
   );
 }
-
 export default Status;
