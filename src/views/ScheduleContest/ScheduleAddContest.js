@@ -17,20 +17,20 @@ const ScheduleAddContest = (props) => {
     const session = useSession();
     let history = useHistory();
     const alert = useAlert();
-    const {  handleSubmit } = useForm();
+    const { handleSubmit } = useForm();
     const [token] = useState(session.token);
     const [loading, setLoading] = useState(false);
     const [users, setUsers] = useState([]);
     const [contestIds, setContestIds] = useState([]);
     const [joinedContestIds, setJoinedContestIds] = useState([]);
-    const [saveIds, setSaveIds] = useState({}) 
+    const [saveIds, setSaveIds] = useState({})
     const [isChecked, setIsChecked] = useState({})
     const onSubmit = async data => {
         let SwalConfig = Helper.SwalConfig("You want to add contest for this match");
         const result = await Swal.fire(SwalConfig);
         let filteredData = contestIds.filter(value => !joinedContestIds.includes(value))
         if (result.value) {
-            if(filteredData.length == 0){
+            if (filteredData.length == 0) {
                 alert.error('Please select atleast one contest.');
                 return
             }
@@ -38,7 +38,7 @@ const ScheduleAddContest = (props) => {
             let postJson = {
                 id: props.match.params.id,
                 contestIds: filteredData,
-                user_id:session.profile._id           
+                user_id: session.profile._id
             };
             if (!contestIds.length) {
                 setLoading(false);
@@ -46,7 +46,7 @@ const ScheduleAddContest = (props) => {
                 return;
             }
             let path = apiUrl.update_match_schedule_contest;
-            const fr = await Helper.put(token,postJson, path);
+            const fr = await Helper.put(token, postJson, path);
             const res = await fr.response.json();
             if (fr.status === 200) {
                 if (res.success) {
@@ -66,7 +66,7 @@ const ScheduleAddContest = (props) => {
 
     const getCatData = async (matchId) => {
         let path = apiUrl.get_contest_Bycategory + '/' + matchId;
-        const fr = await Helper.get(token,path);
+        const fr = await Helper.get(token, path);
         const res = await fr.response.json();
         if (fr.status === 200) {
             if (res.success) {
@@ -76,7 +76,7 @@ const ScheduleAddContest = (props) => {
                 res.results?.forEach(value => {
                     dataIds[value?.cat_data?.title] = []
                     forAllCheck[value?.cat_data?.title] = false
-                    value?.contestData?.forEach(item=>{
+                    value?.contestData?.forEach(item => {
                         dataIds[value?.cat_data?.title]?.push(item?._id)
                     })
                 })
@@ -92,7 +92,7 @@ const ScheduleAddContest = (props) => {
 
     const getData = async (matchId) => {
         let path = apiUrl.get_match_byId + '/' + matchId;
-        const fr = await Helper.get(token,path);
+        const fr = await Helper.get(token, path);
         const res = await fr.response.json();
         if (fr.status === 200) {
             if (res.success) {
@@ -112,23 +112,23 @@ const ScheduleAddContest = (props) => {
         let checkStatus = e.target.checked;
         let checkVal = e.target.value;
         if (checkStatus) {
-            if(checkVal === "All"){
+            if (checkVal === "All") {
                 setIsChecked(prev => {
-                    return {...prev, [title]: true}
+                    return { ...prev, [title]: true }
                 })
                 let allData = [...new Set([...saveIds[title], ...contestIds])]
                 setContestIds(allData)
-            }else{
-            setContestIds(oldArray => [...oldArray, checkVal]);
+            } else {
+                setContestIds(oldArray => [...oldArray, checkVal]);
             }
         } else {
-            if(checkVal === "All"){
-                setContestIds([...contestIds?.filter(value=> !saveIds[title]?.includes(value)), ...joinedContestIds?.filter(value=> saveIds[title]?.includes(value))])
-            }else{
-            setContestIds(contestIds.filter(prev => prev !== checkVal));
+            if (checkVal === "All") {
+                setContestIds([...contestIds?.filter(value => !saveIds[title]?.includes(value)), ...joinedContestIds?.filter(value => saveIds[title]?.includes(value))])
+            } else {
+                setContestIds(contestIds.filter(prev => prev !== checkVal));
             }
             setIsChecked(prev => {
-                return {...prev, [title]: false}
+                return { ...prev, [title]: false }
             })
         }
     }
@@ -156,7 +156,7 @@ const ScheduleAddContest = (props) => {
                                                         <td colSpan="6" className="text-center border-left-0" style={{ "verticalAlign": "middle" }}><h3>{item.cat_data.title}</h3></td>
                                                     </tr>
                                                     <tr key={key + 1}>
-                                                        <th className="text-center"> <input type={'checkbox'} checked={isChecked[item.cat_data.title]} name={'contest_id[]'} value={"All"} style={{marginRight:"10px"}} onChange={(e)=>handleCheck(e,item.cat_data.title)}/>All</th>
+                                                        <th className="text-center"> <input type={'checkbox'} checked={isChecked[item.cat_data.title]} name={'contest_id[]'} value={"All"} style={{ marginRight: "10px" }} onChange={(e) => handleCheck(e, item.cat_data.title)} />All</th>
                                                         <th>Name</th>
                                                         <th>Winning Amount</th>
                                                         <th>Contest Size</th>
@@ -169,7 +169,7 @@ const ScheduleAddContest = (props) => {
                                                         return (
                                                             <tr key={k}>
                                                                 <td className="text-center">
-                                                                    <input type={'checkbox'} checked={checkedStatus} disabled={disabled} name={'contest_id[]'} value={val._id} onChange={(e)=>handleCheck(e,item.cat_data.title)} />
+                                                                    <input type={'checkbox'} checked={checkedStatus} disabled={disabled} name={'contest_id[]'} value={val._id} onChange={(e) => handleCheck(e, item.cat_data.title)} />
                                                                 </td>
                                                                 <td>{val.name}</td>
                                                                 <td>{val.winning_amount}</td>
@@ -192,9 +192,9 @@ const ScheduleAddContest = (props) => {
 
                     {!_.isEmpty(users) ? (
                         <CardFooter>
-                            <Button onClick={() => history.goBack()} className="dark_btn"><i className="fa fa-arrow-left" aria-hidden="true"></i> Back  </Button>                            
+                            <Button onClick={() => history.goBack()} className="dark_btn"><i className="fa fa-arrow-left" aria-hidden="true"></i> Back  </Button>
                             <Button className={'ml-2'} type="submit" color="primary">Submit {loadingIcon}</Button>
-                            
+
                         </CardFooter>
                     ) : null}
 
