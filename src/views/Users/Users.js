@@ -14,7 +14,7 @@ import Status from './Action/Status';
 import View from "./Action/View";
 import ViewBankDetails from "./Action/ViewBankDetails";
 import ViewPancard from "./Action/ViewPancard";
- import { useAlert } from "react-alert";
+import { useAlert } from "react-alert";
 const Users = (props) => {
   const session = useSession();
   const alert = useAlert();
@@ -38,7 +38,7 @@ const Users = (props) => {
   const [dateSortType, setDateSortType] = useState('');
   const [exportExcel, setExportExcel] = useState('');
   const module = session.profile.user_type === "editor" ? session.profile.permissions.find((e) => e.manager === "User Management") : {}
-  const {role: user_type } = session.profile
+  const { role: user_type } = session.profile
   const pageData = async (page = activepage) => {
     setVisibale(true);
     const itemsPerPage = 10;
@@ -144,7 +144,7 @@ const Users = (props) => {
   }
 
   const getData = async (path) => {
-    const fr = await Helper.get(token,path);
+    const fr = await Helper.get(token, path);
     const res = await fr.response.json();
     if (fr.status === 200) {
       if (res.success) {
@@ -179,26 +179,26 @@ const Users = (props) => {
   const showDateSort = (dateSortTypes) => {
     let dateSortIcon;
     if (dateSortTypes === '') {
-        dateSortIcon = <span onClick={handleDateSort}><i className="fa fa-sort pull-right sortSpan"></i></span>;
+      dateSortIcon = <span onClick={handleDateSort}><i className="fa fa-sort pull-right sortSpan"></i></span>;
     } else if (dateSortTypes === 'asc') {
-        dateSortIcon = <span onClick={handleDateSort}><i className="fa fa-sort-down pull-right sortSpan"></i></span>;
+      dateSortIcon = <span onClick={handleDateSort}><i className="fa fa-sort-down pull-right sortSpan"></i></span>;
     } else {
-        dateSortIcon = <span onClick={handleDateSort}><i className="fa fa-sort-up pull-right sortSpan"></i></span>;
+      dateSortIcon = <span onClick={handleDateSort}><i className="fa fa-sort-up pull-right sortSpan"></i></span>;
     }
     return dateSortIcon;
   }
   const showSortButton = (sortTypes) => {
     let sortIcon;
     if (sortTypes === '') {
-        sortIcon = <span onClick={handleNameSort}><i className="fa fa-sort pull-right sortSpan"></i></span>;
+      sortIcon = <span onClick={handleNameSort}><i className="fa fa-sort pull-right sortSpan"></i></span>;
     } else if (sortTypes === 'asc') {
-        sortIcon = <span onClick={handleNameSort}><i className="fa fa-sort-up pull-right sortSpan"></i></span>;
+      sortIcon = <span onClick={handleNameSort}><i className="fa fa-sort-up pull-right sortSpan"></i></span>;
     } else {
-        sortIcon = <span onClick={handleNameSort}><i className="fa fa-sort-down pull-right sortSpan"></i></span>;
+      sortIcon = <span onClick={handleNameSort}><i className="fa fa-sort-down pull-right sortSpan"></i></span>;
     }
     return sortIcon;
   }
-  const showButton = (user_types,item) => {
+  const showButton = (user_types, item) => {
     let editButton;
     if ((user_types === "admin") || (user_types === "editor" && module.edit === 1)) {
       editButton = (
@@ -213,7 +213,7 @@ const Users = (props) => {
     }
     return editButton;
   }
-  const showViewButton = (user_types,image, items) => {
+  const showViewButton = (user_types, image, items) => {
     let viewComponent;
     if ((user_types === "editor" && module.view === 1) || user_types === "admin") {
       viewComponent = <View item={items} userImage={image} />;
@@ -221,7 +221,7 @@ const Users = (props) => {
       viewComponent = null;
     }
     return viewComponent;
-    }
+  }
   const showStatementButton = (items) => {
     let transactionButton = null;
     if ((user_type === "admin") || (user_type === "editor" && module.edit === 1)) {
@@ -236,11 +236,11 @@ const Users = (props) => {
     return transactionButton
   }
 
-  const isbankVerified = (items) => (items.bank_verified && items.bank_verified !== 0)?true:false;
-  const isPanVerified = (items) => (items.pan_verified && items.pan_verified !== 0)?true:false;
+  const isbankVerified = (items) => (items.bank_verified && items.bank_verified !== 0) ? true : false;
+  const isPanVerified = (items) => (items.pan_verified && items.pan_verified !== 0) ? true : false;
   useEffect(() => {
     pageData();
-  },[]);
+  }, []);
 
   return (
     <div className="animated fadeIn loader-outer">
@@ -256,7 +256,7 @@ const Users = (props) => {
                   Add User
                 </Link>
               </div> */}
-              
+
             </CardHeader>
             <CardBody>
               <div className="multipal-searching">
@@ -368,10 +368,10 @@ const Users = (props) => {
                                 <div>
 
                                   {/* {showButton(user_type,item)} */}
-                                  {showViewButton(user_type,userImage,item)}
+                                  {showViewButton(user_type, userImage, item)}
                                   {isbankVerified(item) && <ViewBankDetails module={module} item={item} bank_img={bankImage} refreshData={pageData} />}
                                   {isPanVerified(item) && <ViewPancard module={module} item={item} pan_img={panImage} refreshData={pageData} />}
-                                  { showStatementButton(item) }
+                                  {showStatementButton(item)}
 
                                 </div>
                                 : null
