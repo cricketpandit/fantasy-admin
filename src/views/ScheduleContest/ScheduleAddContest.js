@@ -30,6 +30,10 @@ const ScheduleAddContest = (props) => {
         const result = await Swal.fire(SwalConfig);
         let filteredData = contestIds.filter(value => !joinedContestIds.includes(value))
         if (result.value) {
+            if(filteredData.length == 0){
+                alert.error('Please select atleast one contest.');
+                return
+            }
             setLoading(true);
             let postJson = {
                 id: props.match.params.id,
