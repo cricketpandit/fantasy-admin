@@ -96,7 +96,7 @@ const AddCricketCategory = (props) => {
                     name="title"
                     placeholder="Cricket Category Title"
                     autoComplete="off"
-                    maxLength={25}
+                    maxLength={"25"}
                     value={cayegory}
                     onChange={(e) => handleMinLength(e)}
                     className="form-control"
