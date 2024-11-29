@@ -123,7 +123,7 @@ const AddBanner = (props) => {
           match_id: match_id,
           start_date: startdate,
           end_date: enddate,
-          link: data.link.trim(),
+          // link: data.link.trim(),
           image: presignedKey
         };
         let path = apiUrl.add_banner;
@@ -250,7 +250,7 @@ const AddBanner = (props) => {
                 </div>
               </FormGroup>
             </Col>
-            <Col md={6}>
+            {/* <Col md={6}>
               <FormGroup className='row'>
                 <Label className={'col-md-2 pull-left mt-2'}>Banner Hyperlink</Label>
                 <div className='input_grp col-md-8'>
@@ -271,7 +271,7 @@ const AddBanner = (props) => {
                   )}
                 </div>
               </FormGroup>
-            </Col>
+            </Col> */}
             <Col md={6}>
               <FormGroup className='row'>
                 <Label className={'col-md-2 pull-left mt-2'}>Start Date</Label>

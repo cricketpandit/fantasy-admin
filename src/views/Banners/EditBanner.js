@@ -30,7 +30,7 @@ const EditBanner = (props) => {
   const [loading, setLoading] = useState(false);
   const [startdate, setStartDate] = useState('');
   const [enddate, setEndDate] = useState('');
-  const [link, setLink] = useState('');
+  // const [link, setLink] = useState('');
   const [profilePic, setProfilePic] = useState('');
   const [preview, setProfilePicPreview] = useState('');
   const [title, setTitle] = useState('');
@@ -132,7 +132,7 @@ const EditBanner = (props) => {
         match_id: match_id,
         start_date: startdate,
         end_date: enddate,
-        link: data.link.trim(),
+        // link: data.link.trim(),
         image: presignedKey
       };
       let path = apiUrl.update_banner;
@@ -186,7 +186,7 @@ const EditBanner = (props) => {
       setTitle(bannerData.title);
       setStartDate(bannerData.start_date || '');
       setEndDate(bannerData.end_date || '');
-      setLink(bannerData.link);
+      // setLink(bannerData.link);
       setMediaType(bannerData.media_type || '');
       setSequence(bannerData.sequence);
       setBannerType(bannerData.banner_type);
@@ -274,7 +274,7 @@ const EditBanner = (props) => {
                   </div>
                 </FormGroup>
               </Col>
-              <Col md={6}>
+              {/* <Col md={6}>
                 <FormGroup className='row'>
                   <Label className={'col-md-2 pull-left mt-2'}>Banner Hyperlink</Label>
                   <div className='input_grp  col-md-8'>
@@ -286,7 +286,7 @@ const EditBanner = (props) => {
                     {errors.link && <p className="text-danger marginmessage">Banner Hyperlink is required</p>}
                   </div>
                 </FormGroup>
-              </Col>
+              </Col> */}
               <Col md={6}>
               <FormGroup className='row'>
                   <Label className={'col-md-2 pull-left mt-2'}>Start Date</Label>

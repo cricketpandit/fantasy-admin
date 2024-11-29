@@ -340,7 +340,7 @@ const Users = (props) => {
                       <th className="text-align-left">Username</th>
                       <th className="text-align-left">Phone</th>
                       <th className="text-align-left">Email</th>
-                      <th className="text-align-left">OS Type</th>
+                      {/* <th className="text-align-left">OS Type</th> */}
                       <th className="text-align-center">Status</th>
                       <th className="text-align-center">Created At {showDateSort(dateSortType)}  </th>
                       <th className="text-align-center">Action</th>
@@ -355,7 +355,7 @@ const Users = (props) => {
                           <td className="text-align-left">{item.userName}</td>
                           <td className="text-align-left">{item.mobile}</td>
                           <td className="text-align-left">{item.email}</td>
-                          <td className="text-align-left">{item.deviceType}</td>
+                          {/* <td className="text-align-left">{item.deviceType}</td> */}
                           <td className="text-align-center">
                             <Status item={item} refreshData={pageData} />
                           </td>

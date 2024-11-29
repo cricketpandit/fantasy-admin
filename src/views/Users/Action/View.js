@@ -39,6 +39,12 @@ const View = (props) => {
                 <div>{item.email}</div>
               </FormGroup>
             </Col>
+            <Col md={6}>
+              <FormGroup>
+                <Label><strong>Date Of Birth</strong></Label>
+                <div>{moment(item.dob).format('LL')}</div>
+              </FormGroup>
+            </Col>
   
             <Col md={6}>
               <FormGroup>

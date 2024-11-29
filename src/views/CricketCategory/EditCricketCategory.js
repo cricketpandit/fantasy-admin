@@ -76,7 +76,7 @@ const EditCricketCategory = (props) => {
                     Cricket Category Title
                   </Label>
                   <div className='input_grp  col-md-8'>
-                    <input type="text" name="title" placeholder="Cricket Category Title" autoComplete="off"
+                    <input type="text" maxLength={"25"} name="title" placeholder="Cricket Category Title" autoComplete="off"
                       className="form-control" defaultValue={data.title} ref={register({ required: 'Required' })} />
                     {errors.title && <p className="text-danger marginmessage">Cricket Category Title is required</p>}
                   </div>
