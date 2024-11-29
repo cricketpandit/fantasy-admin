@@ -71,7 +71,6 @@ const EditCricketCategory = (props) => {
             <Row>
               <Col md={12}>
                 <FormGroup className='row'>
-
                   <Label className={"col-md-2 pull-left mt-2"}>
                     Cricket Category Title
                   </Label>
