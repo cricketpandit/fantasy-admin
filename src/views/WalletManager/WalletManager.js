@@ -77,8 +77,6 @@ const WalletManager = (props) => {
     getData(path)
   }
 
-  
-
 
   const getData = async (path) => {
     const fr = await Helper.get(token,path);
