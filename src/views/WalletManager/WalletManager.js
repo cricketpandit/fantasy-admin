@@ -97,10 +97,7 @@ const WalletManager = (props) => {
       setVisible(false)
     }
   }
-
-
-
-
+  
   const onReset = (e) => {
     setQuery({})
     setStartDate('');
