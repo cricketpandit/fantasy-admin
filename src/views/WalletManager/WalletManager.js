@@ -68,7 +68,7 @@ const WalletManager = (props) => {
       status: serachstatus
     }
     setQuery(queries)
-    path = apiUrl.get_wallets + '?page=' + `${page}` + '&itemsPerPage=' + `${itemsPerPage}` + '&keyword=' + `${keywords}` + '&user_start_date=' + `${startdate == '' || startdate == null ? '' : moment(startdate).format('YYYY-MM-DD')}` + '&user_end_date=' + `${enddate == '' || enddate == null ? moment(startdate).format('YYYY-MM-DD') : moment(enddate).format('YYYY-MM-DD')}` + '&status=' + `${serachstatus}`;
+    path = apiUrl.get_wallets + '?page=' + `${page}` + '&itemsPerPage=' + `${itemsPerPage}` + '&keyword=' + `${keywords}` + '&user_start_date=' + `${startdate == '' || startdate == null ? '' : moment(startdate).format('YYYY-MM-DD')}` + '&user_end_date=' + `${enddate == '' || enddate == null ? '' : moment(enddate).format('YYYY-MM-DD')}` + '&status=' + `${serachstatus}`;
     getData(path);
   };
 
@@ -76,8 +76,6 @@ const WalletManager = (props) => {
     let path = apiUrl.get_wallets + '?page=1&itemsPerPage=10';
     getData(path)
   }
-
-  
 
 
   const getData = async (path) => {
