@@ -77,7 +77,7 @@ const Banners = (props) => {
   }
 
   const getData = async (path) => {
-    const fr = await Helper.get(token,path);
+    const fr = await Helper.get(token, path);
     const res = await fr.response.json();
     if (fr.status === 200) {
       if (res.success) {
@@ -108,22 +108,21 @@ const Banners = (props) => {
   const isAdmin = user_type === "admin";
   const shouldRenderEditButton = isEditor || isAdmin;
 
-  const editButton = (item)=> {
-    if(shouldRenderEditButton)
-    {
+  const editButton = (item) => {
+    if (shouldRenderEditButton) {
       return <Link to={{ pathname: `/edit-banner/${item.id}` }} className="btn-link">
-      <button className="btn circle_btn btn-sm mr-1" type="button" title="Edits">
-        <i className="fa fa-pencil" />
-      </button>
-    </Link>
-    }  
+        <button className="btn circle_btn btn-sm mr-1" type="button" title="Edits">
+          <i className="fa fa-pencil" />
+        </button>
+      </Link>
+    }
   }
-    
+
   const isEditorDeleteAllowed = user_type === "editor" && module.delete === 1;
   const shouldRenderDeleteComponent = isEditorDeleteAllowed || isAdmin;
-  
-  const deleteComponent = (item) =>{
-    if(shouldRenderDeleteComponent){
+
+  const deleteComponent = (item) => {
+    if (shouldRenderDeleteComponent) {
       return <Delete item={item} refreshData={pageData} />
     }
   }
@@ -146,7 +145,7 @@ const Banners = (props) => {
                 </Link>
               </div>
             </CardHeader>
-            <CardBody style={{minHeight:"370px"}}>
+            <CardBody style={{ minHeight: "370px" }}>
               <div className="multipal-searching">
                 <Row>
                   <Col xl={9}>
@@ -222,7 +221,7 @@ const Banners = (props) => {
                           <td className="text-align-right">{item.sequence}</td>
                           <td className="text-align-left">{item.banner_type}</td>
                           <td className="text-align-center">
-                            {(!_.isEmpty(item.image) ? <img src={bannerPath + item?.image} height="100" width="200" alt='' /> : <img src={bannerPath + 'avtar.png'} height="100" width="200" alt=''/>)}
+                            {(!_.isEmpty(item.image) ? <img src={bannerPath + item?.image} height="100" width="200" alt='' /> : <img src={bannerPath + 'avtar.png'} height="100" width="200" alt='' />)}
                           </td>
                           <td className="text-align-center">
                             <Status item={item} refreshData={pageData} />
@@ -232,7 +231,7 @@ const Banners = (props) => {
                           <td className="text-align-center w-40">
                             {
                               _.isEmpty(props.match.params.id) ?
-                                <div>                                  
+                                <div>
                                   {deleteComponent(item)}
                                   {editButton(item)}
                                 </div>
