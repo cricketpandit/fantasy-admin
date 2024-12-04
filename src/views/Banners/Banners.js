@@ -39,7 +39,7 @@ const Banners = (props) => {
     query["page"] = page
     query["itemsPerPage"] = itemsPerPage
     let queryString = Helper.serialize(query);
-    let path = apiUrl.get_banners + `?${queryString}`;
+    let path = apiUrl.get_admin_banners + `?${queryString}`;
     getData(path)
   };
   const handleStartDate = (date) => {
@@ -67,12 +67,12 @@ const Banners = (props) => {
     }
 
     setQuery(queries)
-    path = apiUrl.get_banners + '?page=' + `${page}` + '&itemsPerPage=' + `${itemsPerPage}` + '&keyword=' + `${keywords}` + '&start_date=' + `${startdate == null || startdate == "" ? '' : moment(startdate).format('YYYY-MM-DD')}` + '&end_date=' + `${enddate == null || enddate == "" ? '' : moment(enddate).format('YYYY-MM-DD')}` + '&status=' + `${serachstatus}`;
+    path = apiUrl.get_admin_banners + '?page=' + `${page}` + '&itemsPerPage=' + `${itemsPerPage}` + '&keyword=' + `${keywords}` + '&start_date=' + `${startdate == null || startdate == "" ? '' : moment(startdate).format('YYYY-MM-DD')}` + '&end_date=' + `${enddate == null || enddate == "" ? '' : moment(enddate).format('YYYY-MM-DD')}` + '&status=' + `${serachstatus}`;
     getData(path)
   };
 
   const resetSearch = async () => {
-    let path = apiUrl.get_banners + '?page=1&itemsPerPage=10';
+    let path = apiUrl.get_admin_banners + '?page=1&itemsPerPage=10';
     getData(path)
   }
 

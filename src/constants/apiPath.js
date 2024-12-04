@@ -219,6 +219,7 @@ let apiUrl = {
   
   add_banner: '/admin/add-banner',
   get_banners: '/admin/banners',
+  get_admin_banners: '/admin/get-admin-banners',
   get_banner: '/admin/banner',
   update_banner: '/admin/update-banner',
   delete_banner: '/admin/delete-banner',
