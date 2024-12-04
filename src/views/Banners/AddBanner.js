@@ -123,7 +123,6 @@ const AddBanner = (props) => {
           match_id: match_id,
           start_date: startdate,
           end_date: enddate,
-          // link: data.link.trim(),
           image: presignedKey
         };
         let path = apiUrl.add_banner;
