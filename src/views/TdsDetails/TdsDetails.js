@@ -130,31 +130,39 @@ setActivePage(page)
                 <Table hover bordered responsive className="mt-3 text-center">
                   <thead>
                   <tr>
-                      <th colSpan={9}>Total TDS - {tds_details.length}</th>
+                      <th colSpan={10}>Total TDS - {tds_details.length}</th>
                     </tr>
                     <tr>
+                      <th className="text-left">User Name</th>
                       <th className="text-left">User Email</th>
                       <th className="text-left">User PAN</th>
-                      <th className="text-right">Winning Amount INR</th>
-                      <th className="text-right">TDS Amount INR</th>
-                      <th className="text-right">Payout Amount INR</th>
-                      <th className="text-center">Winning Date</th>
+                      <th className="text-right">Current Winning (INR)</th>
+                      <th className="text-right">Current Wallet Balance (INR)</th>
+                      <th className="text-right">Requested Amount (INR)</th>
+                      <th className="text-center">Withdrawl Date</th>
+                      <th className="text-right">TDS Amount (INR)</th>
+                      <th className="text-right">Payout Amount (INR)</th>
+                      <th className="text-right">Total TDS Till Now (INR)</th>
                     </tr>
                   </thead>
                   <tbody>
                     {tds_details.map((item, key) => {
                       return (
                         <tr key={key}>
+                          <td className="text-left">{item.rows?.full_name}</td>
                           <td className="text-left">{item.rows?.email}</td>
                           <td className="text-left">{item?.rows?.pan_number?item?.rows?.pan_number:'N/A'}</td>
-                          <td className="text-right">{item.rows?.winning_amount}</td>
+                          <td className="text-right">{item.rows?.currentWinnings}</td>
+                          <td className="text-right">{item.rows?.currentWalletBalance}</td>
+                          <td className="text-right">{item.rows?.withdrawAmount}</td>
+                          <td className="text-center">{moment(item?.rows?.winning_date).format('LLL')}</td>
                           <td className="text-right">{item.rows?.tds_amount}</td>
                           <td className="text-right">{item.rows?.win_tds_amount}</td>
-                          <td className="text-center">{moment(item?.rows?.winning_date).format('LLL')}</td>
+                          <td className="text-right">{item.rows?.totalTdsTillNow}</td>
                         </tr>
                       )
                     })}
-                    {_.isEmpty(tds_details) && <tr><td colSpan="8"><div className="text-center">No Record Found</div></td></tr>}
+                    {_.isEmpty(tds_details) && <tr><td colSpan="10"><div className="text-center">No Record Found</div></td></tr>}
                   </tbody>
                 </Table>
               </div>
