@@ -56,7 +56,6 @@ const TdsDetails = (props) => {
     setIsserach(true);
     const itemsPerPage = 10;
     let path;
-
     path = apiUrl.tds_details + '?page=' + `${activepage}` + '&itemsPerPage=' + `${itemsPerPage}` + '&keyword=' + `${keywords}`;
 
     const fr = await Helper.get(token, path);
