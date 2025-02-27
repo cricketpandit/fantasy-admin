@@ -147,7 +147,6 @@ const TdsDetails = (props) => {
                               dropdownMode="select" />
                           </FormGroup>
                         </Col>
-
                       </Row>
                     </Form>
                   </Col>
