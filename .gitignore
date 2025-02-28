@@ -39,3 +39,4 @@ Thumbs.db
 .env
 package-lock.json
 .vercel
+.env.*
