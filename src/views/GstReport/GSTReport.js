@@ -49,6 +49,7 @@ const GSTReport = (props) => {
     path = apiUrl.gst_report + `?${queryString}`;
     getData(path);
   };
+  
 
   const handleStartDate = (date) => {
     setEndDate("");
