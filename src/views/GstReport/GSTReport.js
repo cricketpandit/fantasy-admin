@@ -49,7 +49,8 @@ const GSTReport = (props) => {
     path = apiUrl.gst_report + `?${queryString}`;
     getData(path);
   };
-
+  
+  
   const handleStartDate = (date) => {
     setEndDate("");
     setStartDate(date);
@@ -264,7 +265,7 @@ const GSTReport = (props) => {
                               {item.rows.phone}
                             </td>
                             <td className="text-left">
-                              {item.rows.pan_number}
+                              { atob(item.rows.pan_number)}
                             </td>
                             <td className="text-right">
                               {item?.rows?.totalAmount && item?.rows?.totalAmount > 0
