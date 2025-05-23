@@ -234,6 +234,7 @@ const Result = (props) => {
                       <th className="text-left">Series name</th>
                       <th className="text-center">Date</th>
                       <th className="text-center">Time</th>
+                      <th className="text-right">Is Prize Distributed</th>
                       <th className="text-right">No of Contest</th>
                       <th className="text-right">Distribute Winning Amount</th>
                     </tr>
@@ -250,9 +251,13 @@ const Result = (props) => {
                           <td className="text-left">{item.seriesData.name}</td>
                           <td className="text-center">{moment(item.date).format('MMM Do YYYY')}</td>
                           <td className="text-center">{item.time}</td>
+                          <td className="text-right">
+                            <div style={{ color: item.win_flag == 1 ? 'green' : 'red' }}>
+                              {item.win_flag == 1 ? 'YES' : 'NO'}
+                            </div>
+                          </td>
                           <td className="text-right">{(item.joined_contest) ? item.joined_contest.length : 0}</td>
                           <td className="text-right">
-                            {/* {checkButtons(item)} */}
                             <table>
 
                               <tr>
@@ -297,15 +302,15 @@ const Result = (props) => {
                                   </button>
 
                                 </td>
-                          <td>
+                                <td>
 
-                          <Link to={{ state: { "page": activepage, "tab": "result" }, pathname: `/cricket/winning-users-list/${item.match_id}` }} className="btn-link">
-                              <button className="btn circle_btn btn-sm mr-1" type="button" title="Winning Users List">
-                                Winning Users List
-                              </button>
-                            </Link>
+                                  <Link to={{ state: { "page": activepage, "tab": "result" }, pathname: `/cricket/winning-users-list/${item.match_id}` }} className="btn-link">
+                                    <button className="btn circle_btn btn-sm mr-1" type="button" title="Winning Users List">
+                                      Winning Users List
+                                    </button>
+                                  </Link>
 
-                          </td>
+                                </td>
                               </tr>
 
                             </table>
