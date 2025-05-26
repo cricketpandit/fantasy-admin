@@ -187,7 +187,7 @@ const TdsDetails = (props) => {
                         <tr key={key}>
                           <td className="text-left">{item.rows?.full_name}</td>
                           <td className="text-left">{item.rows?.email}</td>
-                          <td className="text-left">{item?.rows?.pan_number ? item?.rows?.pan_number : 'N/A'}</td>
+                          <td className="text-left">{item?.rows?.pan_number ? atob(item?.rows?.pan_number) : 'N/A'}</td>
                           <td className="text-right">{item.rows?.currentWinnings}</td>
                           <td className="text-right">{item.rows?.depositAmount}</td>
                           <td className="text-right">{item.rows?.currentWalletBalance}</td>
