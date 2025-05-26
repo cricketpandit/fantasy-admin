@@ -86,7 +86,7 @@ const ViewPancard = (props) => {
             <Col md={6}>
               <FormGroup>
                 <Label><strong>Pan Number</strong></Label>
-                <div>{Helper.orOperator(item.pan_number,'')}</div>
+                <div>{Helper.orOperator(atob(item.pan_number),'')}</div>
               </FormGroup>
             </Col>
             <Col md={6}>
