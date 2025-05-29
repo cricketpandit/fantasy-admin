@@ -17,6 +17,7 @@ const CricketEarningManager = (props) => {
   const [contests, setContests] = useState([]);
   const [totalitems, setTotalItems] = useState('');
   const [totalEarning, setTotalEarning] = useState(0);
+  const [completeEarning, setCompleteEarning] = useState(0);
   const [activepage, setActivePage] = useState(1);
   const [startdate, setStartDate] = useState('');
   const [enddate, setEndDate] = useState('');
@@ -32,6 +33,7 @@ const CricketEarningManager = (props) => {
   const [type, setType] = useState('');
   const [dropdown, setDropdown] = useState([]);
   const [match_dropdown, setMatchDropdown] = useState([]);
+  const [earning, setEarning] = useState('');
 
   const [query, setQuery] = useState({});
   const [exportExcel, setExportExcel] = useState('');
@@ -53,7 +55,7 @@ const CricketEarningManager = (props) => {
   const getSeriesData = async () => {
     setVisibale(true);
     let path;
-    path = apiUrl.get_series;
+    path = apiUrl.get_all_series;
 
     const fr = await Helper.get(token, path);
     const res = await fr.response.json();
@@ -164,6 +166,7 @@ const CricketEarningManager = (props) => {
         setContests(res.results || []);
         setTotalItems(res.totalRecords);
         setTotalEarning(res.TotalEarning);
+        setCompleteEarning(res.completeEarning);
         setExportExcel(res.excel_path);
         setVisibale(false)
         setIsserach(false);
@@ -206,7 +209,7 @@ const CricketEarningManager = (props) => {
         <Col>
           <Card>
             <CardHeader>
-              <i className="fa fa-list" /> Cricket Earning Manager
+              <i className="fa fa-list" /> Cricket Earning Manager {console.log("completeEarning", completeEarning)}
             </CardHeader>
             <CardBody>
               <div className="multipal-searching">
@@ -282,6 +285,7 @@ const CricketEarningManager = (props) => {
                     </a>
                   </Col>
                 </Row>
+                <CardHeader>Earning : {completeEarning.toFixed(2)} INR </CardHeader>
               </div>
               <div id="reportId" >
                 <Table hover bordered responsive className="mt-3 text-center">

@@ -60,6 +60,7 @@ let apiUrl = {
 
   get_coupons_for_banners: '/fantasy/get-coupons-for-banners',
   get_series: '/fantasy/get-series',
+  get_admin_series: '/fantasy/get-admin-series',
   get_all_series: '/fantasy/get-all-series',
   get_upcoming_series: '/fantasy/get-upconing-series',
   getCricketSeries: '/fantasy/get-cricket-series',
