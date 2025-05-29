@@ -206,22 +206,6 @@ const FantasyDashboard = () => {
           </Link>
         </div>
 
-        <div className="col-xl-3 col-lg-4 col-sm-6">
-          <Link to={"/earning"}>
-            <div className="text-white dsboard_box5 card border-0 value_custome_card">
-              <div className="card-body">
-                <div className="h4 text-muted text-right mb-2"><i className="icon-calculator"></i></div>
-                <div className="h1 mb-0">{dashboard.TotalEarning}</div>
-                <small className="text-muted text-uppercase font-weight-bold">Admin Total Profit</small>
-                <div className="progress-xs mt-3 mb-0 progress-white progress">
-                  <div className="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0"
-                    aria-valuemax="100" style={{ width: '100%' }}></div>
-                </div>
-              </div>
-            </div>
-          </Link>
-        </div>
-
         <Col md={12}>
           <Card>
             <CardBody>

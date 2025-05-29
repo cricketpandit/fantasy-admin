@@ -48,7 +48,7 @@ const EarningGraph = (props) => {
                     interval: 1,
                     majorGridLines: { width: 0 },
                     intervalType: 'Years'
-                }} primaryYAxis={{  title: 'Earnings in $' }} title='Earnings'>
+                }} primaryYAxis={{  title: 'Earnings in INR' }} title='Earnings'>
             <Inject services={[ColumnSeries, Legend, Tooltip, DataLabel, LineSeries, DateTime,AreaSeries,StepAreaSeries,BarSeries,Category]} />
             <SeriesCollectionDirective>
                 <SeriesDirective dataSource={dateTimeData} xName='x' yName='y' name={_.startCase(_.toLower(item))} type='Column' marker={marker}>
