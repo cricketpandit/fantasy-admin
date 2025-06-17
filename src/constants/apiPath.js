@@ -11,6 +11,7 @@ let apiUrl = {
   get_admin_profile: '/admin/get-admin-profile',
   update_admin_profile: '/admin/admin-profile',
   change_admin_password: '/admin/change-password',
+  get_logs: '/admin/get-logs',
 
   get_sub_admins: '/admin/sub-admins',
   add_sub_admin: '/admin/add-sub-admin',

@@ -35,6 +35,7 @@ const AddCoupon = React.lazy(() => import('../views/Coupons/AddCoupon'));
 const EditCoupon = React.lazy(() => import('../views/Coupons/EditCoupon'));
 const ListCouponUsers = React.lazy(() => import('../views/Coupons/ListCouponUsers'));
 
+const Logs = React.lazy(() => import('../views/CronLogs/Logs'));
 const Influencers = React.lazy(() => import('../views/Influencer/Influencers'));
 const AddInfluencer = React.lazy(() => import('../views/Influencer/AddInfluencer'));
 const EditInfluencer = React.lazy(() => import('../views/Influencer/EditInfluencer'));
@@ -180,6 +181,7 @@ const fantasyRoutes = [
   { path: '/list-coupon-users/:coupon_code', name: 'Coupon / Users', component: ListCouponUsers, module: 'Coupons' },
 
   { path: '/influencers', name: 'Influencers', component: Influencers, module: 'Influencers' },
+  { path: '/logs', name: 'Logs', component: Logs, module: 'Logs' },
   { path: '/add-influencer-code', name: 'Add Influencer', component: AddInfluencer, module: 'Influencers' },
   { path: '/edit-influencer-code/:id', name: 'Edit Influencer', component: EditInfluencer, module: 'Influencers' },
   { path: '/list-influencer-code-users/:id', name: 'Influencers / Users', component: ListInfluencerUsers, module: 'Influencers' },

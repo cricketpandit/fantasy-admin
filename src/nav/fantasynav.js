@@ -153,6 +153,11 @@ export default {
       url: '/earning/daily-cricket',
       icon: 'nav-icon fa fa-list-alt',
     },
+    {
+      name: 'Logs',
+      url: '/logs',
+      icon: 'nav-icon fa fa-gift',
+    },
 
     // {
     //   name: 'Account Statement',
