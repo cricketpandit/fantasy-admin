@@ -215,7 +215,7 @@ const [loading, setLoading] = useState(false);
 
                           <td>
                             <button
-                              className={'btn circle_btn table_auto_btn mr-5 '}
+                              className={'btn circle_btn dark_btn table_auto_btn col-md-12 '}
                               type={'button'}
                               onClick={(e) => { announceLineup(item.match_id, item.series_id) }}
                             >
