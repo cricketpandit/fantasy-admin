@@ -29,7 +29,7 @@ const UpComing = (props) => {
   const [category_id, setQuizCategory] = useState('');
   const [contestType, setContestType] = useState('');
   const [query, setQuery] = useState({});
-
+const [loading, setLoading] = useState(false);
 
   const pageData = async (page = activepage) => {
     setVisibale(true);
@@ -125,6 +125,25 @@ const UpComing = (props) => {
     setActivePage(1);
   };
 
+  const announceLineup = async (match_id, series_id) => {
+      setLoading(true);
+      let path = `/crons/get-match-lineup-for-single-match/?match_id=${match_id}&series_id=${series_id}`;
+      const fr = await Helper.get(token, path);
+      const res = await fr.response.json();
+      if (fr.status === 200) {
+        if (res.success) {
+          setLoading(false);
+          alert.success(res.msg);
+        } else {
+          setLoading(false);
+          alert.error(res.msg);
+        }
+      } else {
+        setLoading(false);
+        alert.error(res.error);
+      }
+    }
+
   useEffect(() => {
     pageData();
   }, []);
@@ -193,8 +212,15 @@ const UpComing = (props) => {
                           <td className="text-center">
                             <ExtendDate id={item._id} selected={new Date(item?.date)} time={item.time} refreshData={pageData} />
                           </td>                          
+
                           <td>
-                            <span> <input type="checkbox" name="test" checked={item.lineup || false} onChange={() => updateMatchLineUP(!item.lineup, item._id)} /></span>
+                            <button
+                              className={'btn circle_btn table_auto_btn mr-5 '}
+                              type={'button'}
+                              onClick={(e) => { announceLineup(item.match_id, item.series_id) }}
+                            >
+                              Announce Lineup
+                            </button>
                           </td>
                           <td className="text-center">
                           <Link to={{ pathname: `/cricket/schedule-update-contests/${item._id}` }} className="btn-link">
