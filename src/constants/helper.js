@@ -50,6 +50,32 @@ const helper = {
    
     return { response: res, status: res.status };
   },
+  pointGet: async (token, path = "") => {
+    const url = process.env.REACT_APP_IMAGE_BASE_URL + path;
+
+    const res = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json", "x-access-token": token || ''
+      }
+    }); 
+
+    if (res.status === 403) {
+      localStorage.setItem('user_inactive', "inactive");
+      window.location = '/login';
+      return;
+    }
+
+    if (res.status === 401) {
+      localStorage.removeItem("ons-app");
+      localStorage.removeItem("IsLogin");
+      localStorage.removeItem("username");
+      window.location = '/login';
+    }
+
+   
+    return { response: res, status: res.status };
+  },
 
   put: async (token,jsonObj = {}, path = "") => {
 
