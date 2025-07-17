@@ -97,7 +97,7 @@ const Result = (props) => {
   };
   const prize_distribution = async (match_id, series_id) => {
     setLoading(true);
-    let path = `/crons/matches-prize-distribution/?match_id=${match_id}`;
+    let path = `/crons/matches-prize-distribution-for-admin/?match_id=${match_id}`;
     const fr = await Helper.get(token, path);
     const res = await fr.response.json();
     if (fr.status === 200) {
@@ -414,7 +414,7 @@ const Result = (props) => {
                                     type="button"
                                     title="Winning Users List"
                                   >
-                                    {`Winning Users List`}
+                                    {`Winning Users Lists`}
                                   </button>
                                 </Link>
                               </li>
