@@ -127,7 +127,25 @@ const [loading, setLoading] = useState(false);
 
   const announceLineup = async (match_id, series_id) => {
       setLoading(true);
-      let path = `/crons/get-match-lineup-for-single-match/?match_id=${match_id}&series_id=${series_id}`;
+      let path = `/crons/get-match-lineup-for-single-match-for-admin/?match_id=${match_id}&series_id=${series_id}`;
+      const fr = await Helper.get(token, path);
+      const res = await fr.response.json();
+      if (fr.status === 200) {
+        if (res.success) {
+          setLoading(false);
+          alert.success(res.msg);
+        } else {
+          setLoading(false);
+          alert.error(res.msg);
+        }
+      } else {
+        setLoading(false);
+        alert.error(res.error);
+      }
+    }
+  const get_teams_for_single_series = async (series_id) => {
+      setLoading(true);
+      let path = `/crons/get-teams-for-single-series/?series_id=${series_id}`;
       const fr = await Helper.get(token, path);
       const res = await fr.response.json();
       if (fr.status === 200) {
@@ -220,6 +238,15 @@ const [loading, setLoading] = useState(false);
                               onClick={(e) => { announceLineup(item.match_id, item.series_id) }}
                             >
                               Announce Lineup
+                            </button>
+                            <br />
+                            <br />
+                            <button
+                              className={'btn circle_btn dark_btn table_auto_btn col-md-12 '}
+                              type={'button'}
+                              onClick={(e) => { get_teams_for_single_series(item.series_id) }}
+                            >
+                              Get Teams Info
                             </button>
                           </td>
                           <td className="text-center">
